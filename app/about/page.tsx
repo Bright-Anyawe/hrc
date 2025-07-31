@@ -1,11 +1,11 @@
-import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
 import AnimatedPage from '@/components/AnimatedPage';
 
-export default function Home() {
+export default function AboutPage() {
   return (
     <AnimatedPage>
       <main className="min-h-screen">
-        <HeroSection />
+        <AboutSection />
       </main>
     </AnimatedPage>
   );

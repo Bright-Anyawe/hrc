@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -18,20 +19,13 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Products', href: '#products' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Why Choose Us', href: '/why-choose-us' },
+    { name: 'Contact', href: '/contact' },
   ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
 
   return (
     <header
@@ -45,40 +39,41 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-hrc-red rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">H</span>
+            <Link href="/">
+              <div className="flex items-center space-x-2 cursor-pointer">
+                <div className="w-10 h-10 bg-hrc-red rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">H</span>
+                </div>
+                <div className="hidden sm:block">
+                  <h1 className={`text-xl font-bold ${isScrolled ? 'text-hrc-blue' : 'text-white'}`}>
+                    HEDGE RESOURCE CENTRE
+                  </h1>
+                  <p className={`text-sm ${isScrolled ? 'text-gray-600' : 'text-gray-200'}`}>
+                    Leader in resource consulting
+                  </p>
+                </div>
               </div>
-              <div className="hidden sm:block">
-                <h1 className={`text-xl font-bold ${isScrolled ? 'text-hrc-blue' : 'text-white'}`}>
-                  HEDGE RESOURCE CENTRE
-                </h1>
-                <p className={`text-sm ${isScrolled ? 'text-gray-600' : 'text-gray-200'}`}>
-                  Leader in resource consulting
-                </p>
-              </div>
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-hrc-red ${
+              <Link key={item.name} href={item.href}>
+                <span className={`text-sm font-medium transition-colors duration-200 hover:text-hrc-red ${
                   isScrolled ? 'text-gray-700' : 'text-white'
-                }`}
-              >
-                {item.name}
-              </button>
+                }`}>
+                  {item.name}
+                </span>
+              </Link>
             ))}
-            <Button
-              onClick={() => scrollToSection('#contact')}
-              className="bg-hrc-red hover:bg-red-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg"
-            >
-              Get In Touch
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="bg-hrc-red hover:bg-red-700 text-white px-6 py-2 rounded-full transition-all duration-300 hover:shadow-lg"
+              >
+                Get In Touch
+              </Button>
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -99,20 +94,23 @@ const Header = () => {
           <div className="md:hidden bg-white border-t border-gray-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-hrc-red hover:bg-gray-50 rounded-md transition-colors duration-200 w-full text-left"
-                >
-                  {item.name}
-                </button>
+                <Link key={item.name} href={item.href}>
+                  <span
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-hrc-red hover:bg-gray-50 rounded-md transition-colors duration-200 w-full text-left"
+                  >
+                    {item.name}
+                  </span>
+                </Link>
               ))}
-              <Button
-                onClick={() => scrollToSection('#contact')}
-                className="w-full mt-4 bg-hrc-red hover:bg-red-700 text-white"
-              >
-                Get In Touch
-              </Button>
+              <Link href="/contact">
+                <Button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full mt-4 bg-hrc-red hover:bg-red-700 text-white"
+                >
+                  Get In Touch
+                </Button>
+              </Link>
             </div>
           </div>
         )}

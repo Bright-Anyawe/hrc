@@ -55,6 +55,11 @@ export const metadata: Metadata = {
   },
 };
 
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
+import WhatsAppButton from '@/components/WhatsAppButton';
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -94,7 +99,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <Header />
         {children}
+        <Footer />
+        <BackToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );

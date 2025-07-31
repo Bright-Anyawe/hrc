@@ -1,11 +1,11 @@
-import HeroSection from '@/components/HeroSection';
+import WhyChooseUs from '@/components/WhyChooseUs';
 import AnimatedPage from '@/components/AnimatedPage';
 
-export default function Home() {
+export default function WhyChooseUsPage() {
   return (
     <AnimatedPage>
       <main className="min-h-screen">
-        <HeroSection />
+        <WhyChooseUs />
       </main>
     </AnimatedPage>
   );
