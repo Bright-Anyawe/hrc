@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Counter from './Counter';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -94,7 +95,7 @@ const HeroSection = () => {
               <Button
                 onClick={() => scrollToSection('#contact')}
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-hrc-blue px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center"
+                className="border-2 border-white bg-black/20 text-white hover:bg-hrc-red hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center"
               >
                 Contact Us
                 <PlayCircle className="ml-2 h-5 w-5" />
@@ -104,15 +105,21 @@ const HeroSection = () => {
             {/* Statistics */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">15+</div>
+                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                  <Counter target={15} />+
+                </div>
                 <div className="text-sm md:text-base text-gray-200">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">1000+</div>
+                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                  <Counter target={1000} />+
+                </div>
                 <div className="text-sm md:text-base text-gray-200">Clients Served</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">50+</div>
+                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                  <Counter target={50} />+
+                </div>
                 <div className="text-sm md:text-base text-gray-200">Projects Completed</div>
               </div>
             </div>
