@@ -45,24 +45,41 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after success message
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
+    setIsSubmitted(false); // Reset submitted state on new submission attempt
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        // Reset form after success message
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: ''
+          });
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        console.error('Form submission failed:', errorData.error || 'Unknown error');
+        alert(`Failed to send message: ${errorData.error || 'Please try again.'}`); // Provide user feedback
+      }
+    } catch (error) {
+      console.error('An error occurred during form submission:', error);
+      alert('An unexpected error occurred. Please try again later.'); // Provide user feedback
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
