@@ -68,17 +68,17 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <div className={`text-white space-y-6 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 {slides[currentSlide].title}
               </h1>
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-yellow-300">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-yellow-300">
                 {slides[currentSlide].subtitle}
               </h2>
-              <p className="text-lg md:text-xl text-gray-200 max-w-2xl">
+              <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl">
                 {slides[currentSlide].description}
               </p>
             </div>
@@ -87,7 +87,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 onClick={() => scrollToSection('#services')}
-                className="bg-hrc-red hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center"
+                className="bg-hrc-red hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center"
               >
                 Explore Services
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -95,7 +95,7 @@ const HeroSection = () => {
               <Button
                 onClick={() => scrollToSection('#contact')}
                 variant="outline"
-                className="border-2 border-white bg-black/20 text-white hover:bg-hrc-red hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center"
+                className="border-2 border-white bg-black/20 text-white hover:bg-hrc-red hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center"
               >
                 Contact Us
                 <PlayCircle className="ml-2 h-5 w-5" />
@@ -103,24 +103,24 @@ const HeroSection = () => {
             </div>
 
             {/* Statistics */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
                   <Counter target={15} />+
                 </div>
-                <div className="text-sm md:text-base text-gray-200">Years Experience</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-200">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
                   <Counter target={1000} />+
                 </div>
-                <div className="text-sm md:text-base text-gray-200">Clients Served</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-200">Clients Served</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-yellow-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
                   <Counter target={50} />+
                 </div>
-                <div className="text-sm md:text-base text-gray-200">Projects Completed</div>
+                <div className="text-xs sm:text-sm md:text-base text-gray-200">Projects Completed</div>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ const HeroSection = () => {
           {/* Image Content */}
           <div className={`flex justify-center lg:justify-end ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
             <div className="relative">
-              <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white shadow-2xl">
+              <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Professional African businesswoman"

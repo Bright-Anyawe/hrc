@@ -39,33 +39,34 @@ const Footer = () => {
   return (
     <footer className="bg-hrc-blue text-white">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-hrc-red rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">H</span>
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center space-x-2 mb-4 sm:mb-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-base sm:text-lg">H</span>
               </div>
-              <div>
-                <h3 className="text-xl font-bold">HEDGE RESOURCE CENTRE</h3>
-                <p className="text-sm text-gray-300">Leader in resource consulting</p>
+              <div className="min-w-0">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold leading-tight">HEDGE RESOURCE CENTRE</h3>
+                <p className="text-xs sm:text-sm text-gray-300">Leader in resource consulting</p>
               </div>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
               Since 2004, we have been executing our services and projects to achieve Quality Education, Poverty Reduction, and Sustainable Communities.
             </p>
-            
+
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 bg-hrc-red rounded-full flex items-center justify-center hover:bg-white hover:text-hrc-red transition-all duration-300 hover:scale-110"
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red rounded-full flex items-center justify-center hover:bg-white hover:text-hrc-red transition-all duration-300 hover:scale-110"
                   aria-label={social.label}
                 >
-                  <social.icon size={18} />
+                  <social.icon size={16} className="sm:hidden" />
+                  <social.icon size={18} className="hidden sm:block" />
                 </a>
               ))}
             </div>
@@ -73,13 +74,13 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Our Services</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Our Services</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service}>
                   <button
                     onClick={() => scrollToSection('#services')}
-                    className="text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300 text-left"
+                    className="text-sm sm:text-base text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300 text-left"
                   >
                     {service}
                   </button>
@@ -90,13 +91,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300"
+                    className="text-sm sm:text-base text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300"
                   >
                     {link.name}
                   </button>
@@ -107,29 +108,29 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contact Info</h4>
-            <div className="space-y-4">
+            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Contact Info</h4>
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-hrc-red mt-1 flex-shrink-0" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300">0302907115</p>
-                  <p className="text-gray-300">0591481815</p>
+                  <p className="text-sm sm:text-base text-gray-300">0302907115</p>
+                  <p className="text-sm sm:text-base text-gray-300">0591481815</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-gray-300">info@hrcghana.com</p>
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-gray-300 break-all">info@hrcghana.com</p>
               </div>
-              
+
               <div className="flex items-start space-x-3">
-                <Globe className="w-5 h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-gray-300">www.hrcghana.com</p>
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-gray-300">www.hrcghana.com</p>
               </div>
-              
+
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-gray-300">Accra, Ghana</p>
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-gray-300">Accra, Ghana</p>
               </div>
             </div>
           </div>
@@ -138,19 +139,19 @@ const Footer = () => {
 
       {/* Newsletter Section */}
       <div className="border-t border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-4 md:mb-0">
-              <h4 className="text-lg font-bold mb-2">Stay Updated</h4>
-              <p className="text-gray-300">Subscribe to our newsletter for latest updates and insights</p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-center md:text-left">
+              <h4 className="text-base sm:text-lg font-bold mb-1 sm:mb-2">Stay Updated</h4>
+              <p className="text-sm sm:text-base text-gray-300">Subscribe to our newsletter for latest updates and insights</p>
             </div>
             <div className="flex w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 focus:outline-none focus:ring-2 focus:ring-hrc-red"
+                className="px-3 sm:px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red"
               />
-              <button className="bg-hrc-red hover:bg-red-700 px-6 py-2 rounded-r-lg font-semibold transition-colors duration-300">
+              <button className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap">
                 Subscribe
               </button>
             </div>
@@ -160,19 +161,19 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="border-t border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-300 text-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+            <p className="text-gray-300 text-xs sm:text-sm text-center sm:text-left">
               © {currentYear} Hedge Resource Centre. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-300 hover:text-white text-sm transition-colors duration-300">
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
+              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-300 hover:text-white text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-300 hover:text-white text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
                 Sitemap
               </a>
             </div>

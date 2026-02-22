@@ -89,33 +89,33 @@ const ProductsClientsProjects = () => {
   ];
 
   return (
-    <section id="products" className="py-20 bg-white">
+    <section id="products" className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-hrc-blue mb-4">
+        <div className={`text-center mb-8 sm:mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Products, Clients & Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Discover our comprehensive offerings, diverse clientele, and impactful projects
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Tab Navigation */}
-        <div className={`flex justify-center mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-          <div className="bg-gray-100 p-2 rounded-xl">
+        <div className={`flex justify-center mb-8 sm:mb-12 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
+          <div className="bg-gray-100 p-1.5 sm:p-2 rounded-xl flex flex-wrap justify-center gap-1 sm:gap-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-hrc-red text-white shadow-lg'
                     : 'text-gray-600 hover:text-hrc-red hover:bg-white'
                 }`}
               >
-                <tab.icon className="w-5 h-5 mr-2" />
+                <tab.icon className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 {tab.label}
               </button>
             ))}
@@ -132,29 +132,31 @@ const ProductsClientsProjects = () => {
               }`}
             >
               {/* Tab Header */}
-              <div className="text-center mb-12">
-                <div className={`inline-flex items-center justify-center w-16 h-16 ${data.color} text-white rounded-full mb-4`}>
-                  <data.icon size={32} />
+              <div className="text-center mb-8 sm:mb-12">
+                <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 ${data.color} text-white rounded-full mb-3 sm:mb-4`}>
+                  <data.icon size={24} className="sm:hidden" />
+                  <data.icon size={32} className="hidden sm:block" />
                 </div>
-                <h3 className="text-3xl font-bold text-hrc-blue">{data.title}</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-hrc-blue">{data.title}</h3>
               </div>
 
               {/* Items Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
                 {data.items.map((item, index) => (
                   <div
                     key={item.name}
-                    className="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-hrc-red/20"
+                    className="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-3 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 hover:border-hrc-red/20"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="text-center">
-                      <div className={`inline-flex items-center justify-center w-12 h-12 ${data.color} text-white rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                        <item.icon size={24} />
+                      <div className={`inline-flex items-center justify-center w-9 h-9 sm:w-12 sm:h-12 ${data.color} text-white rounded-lg mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                        <item.icon size={18} className="sm:hidden" />
+                        <item.icon size={24} className="hidden sm:block" />
                       </div>
-                      <h4 className="text-lg font-bold text-hrc-blue mb-2 group-hover:text-hrc-red transition-colors duration-300">
+                      <h4 className="text-sm sm:text-lg font-bold text-hrc-blue mb-1 sm:mb-2 group-hover:text-hrc-red transition-colors duration-300">
                         {item.name}
                       </h4>
-                      <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                      <p className="text-xs sm:text-sm text-gray-600 group-hover:text-gray-800 transition-colors duration-300 hidden sm:block">
                         {item.description}
                       </p>
                     </div>
@@ -166,23 +168,23 @@ const ProductsClientsProjects = () => {
         </div>
 
         {/* Bottom Statistics */}
-        <div className={`mt-16 bg-gradient-to-r from-hrc-blue to-hrc-red rounded-2xl p-8 text-white ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '600ms' }}>
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+        <div className={`mt-10 sm:mt-16 bg-gradient-to-r from-hrc-blue to-hrc-red rounded-2xl p-4 sm:p-6 md:p-8 text-white ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '600ms' }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-lg opacity-90">Products Delivered</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">50+</div>
+              <div className="text-sm sm:text-lg opacity-90">Products Delivered</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">1000+</div>
-              <div className="text-lg opacity-90">Clients Served</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">1000+</div>
+              <div className="text-sm sm:text-lg opacity-90">Clients Served</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">25+</div>
-              <div className="text-lg opacity-90">Active Projects</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">25+</div>
+              <div className="text-sm sm:text-lg opacity-90">Active Projects</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2">15+</div>
-              <div className="text-lg opacity-90">Years Experience</div>
+              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">15+</div>
+              <div className="text-sm sm:text-lg opacity-90">Years Experience</div>
             </div>
           </div>
         </div>

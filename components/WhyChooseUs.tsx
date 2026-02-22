@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section id="why-choose-us" className="py-20 bg-white relative overflow-hidden">
+    <section id="why-choose-us" className="py-12 sm:py-16 md:py-20 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -74,45 +74,47 @@ const WhyChooseUs = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-hrc-blue mb-4">
+        <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Why Choose Us?
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Discover what sets us apart and makes us the preferred choice for resource consulting
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Reasons Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 mb-10 sm:mb-16">
           {reasons.map((reason, index) => {
             const IconComponent = reason.icon;
             const isAnimated = animatedItems.includes(index);
-            
+
             return (
               <div
                 key={reason.title}
-                className={`group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 hover:border-hrc-red/30 ${
+                className={`group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-gray-100 hover:border-hrc-red/30 ${
                   isAnimated ? 'animate-slide-up opacity-100' : 'opacity-0'
                 }`}
               >
                 {/* Animated Check Icon */}
-                <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-hrc-red text-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <Check size={28} className="animate-pulse" />
+                <div className="relative mb-4 sm:mb-6">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-hrc-red text-white rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Check size={20} className="sm:hidden animate-pulse" />
+                    <Check size={28} className="hidden sm:block animate-pulse" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-hrc-blue text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <IconComponent size={16} />
+                  <div className="absolute -top-2 -right-2 w-7 h-7 sm:w-8 sm:h-8 bg-hrc-blue text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <IconComponent size={14} className="sm:hidden" />
+                    <IconComponent size={16} className="hidden sm:block" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-hrc-blue mb-4 group-hover:text-hrc-red transition-colors duration-300">
+                  <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-2 sm:mb-4 group-hover:text-hrc-red transition-colors duration-300">
                     {reason.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
                     {reason.description}
                   </p>
                 </div>
@@ -126,47 +128,47 @@ const WhyChooseUs = () => {
 
         {/* Statistics Section */}
         <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '1000ms' }}>
-          <div className="bg-gradient-to-r from-hrc-blue via-hrc-red to-hrc-blue rounded-3xl p-12 text-white text-center">
-            <h3 className="text-3xl font-bold mb-8">Our Track Record Speaks</h3>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="bg-gradient-to-r from-hrc-blue via-hrc-red to-hrc-blue rounded-3xl p-6 sm:p-8 md:p-12 text-white text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Our Track Record Speaks</h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
               <div className="group cursor-pointer">
-                <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
                   98%
                 </div>
-                <div className="text-lg opacity-90">Client Satisfaction</div>
+                <div className="text-sm sm:text-lg opacity-90">Client Satisfaction</div>
               </div>
-              
+
               <div className="group cursor-pointer">
-                <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
                   1000+
                 </div>
-                <div className="text-lg opacity-90">Projects Completed</div>
+                <div className="text-sm sm:text-lg opacity-90">Projects Completed</div>
               </div>
-              
+
               <div className="group cursor-pointer">
-                <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
                   15+
                 </div>
-                <div className="text-lg opacity-90">Years Experience</div>
+                <div className="text-sm sm:text-lg opacity-90">Years Experience</div>
               </div>
-              
+
               <div className="group cursor-pointer">
-                <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
                   24/7
                 </div>
-                <div className="text-lg opacity-90">Support Available</div>
+                <div className="text-sm sm:text-lg opacity-90">Support Available</div>
               </div>
             </div>
 
             {/* Call to Action */}
-            <div className="mt-12">
+            <div className="mt-8 sm:mt-12">
               <button
                 onClick={() => {
                   const element = document.querySelector('#contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-hrc-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                className="bg-white text-hrc-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 Experience the Difference
               </button>
@@ -175,17 +177,17 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Testimonial Preview */}
-        <div className={`mt-16 text-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
-          <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center justify-center mb-6">
+        <div className={`mt-10 sm:mt-16 text-center ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
+          <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-5 sm:p-8">
+            <div className="flex items-center justify-center mb-4 sm:mb-6">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                <Star key={i} className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 fill-current" />
               ))}
             </div>
-            <blockquote className="text-xl text-gray-700 italic mb-6">
+            <blockquote className="text-base sm:text-xl text-gray-700 italic mb-4 sm:mb-6">
               "Hedge Resource Centre has been instrumental in transforming our business operations. Their expertise, professionalism, and commitment to excellence are unmatched."
             </blockquote>
-            <div className="text-hrc-blue font-semibold">
+            <div className="text-hrc-blue font-semibold text-sm sm:text-base">
               — Satisfied Client
             </div>
           </div>

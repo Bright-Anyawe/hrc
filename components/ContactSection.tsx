@@ -110,41 +110,42 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-hrc-blue mb-4">
+        <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Get in Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Ready to transform your business? Contact us today and let's discuss how we can help you achieve your goals.
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Information */}
-          <div className={`space-y-8 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
+          <div className={`space-y-5 sm:space-y-8 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div>
-              <h3 className="text-2xl font-bold text-hrc-blue mb-6">Contact Information</h3>
-              
-              <div className="grid gap-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-hrc-blue mb-4 sm:mb-6">Contact Information</h3>
+
+              <div className="grid gap-3 sm:gap-6">
                 {contactInfo.map((info, index) => (
                   <div
                     key={info.title}
-                    className="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group"
+                    className="flex items-start space-x-3 sm:space-x-4 bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group"
                     style={{ animationDelay: `${index * 200}ms` }}
                   >
-                    <div className={`p-3 rounded-lg ${info.color} group-hover:scale-110 transition-transform duration-300`}>
-                      <info.icon size={24} />
+                    <div className={`p-2 sm:p-3 rounded-lg ${info.color} group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+                      <info.icon size={20} className="sm:hidden" />
+                      <info.icon size={24} className="hidden sm:block" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-hrc-blue mb-2 group-hover:text-hrc-red transition-colors duration-300">
+                      <h4 className="font-semibold text-sm sm:text-base text-hrc-blue mb-1 sm:mb-2 group-hover:text-hrc-red transition-colors duration-300">
                         {info.title}
                       </h4>
                       {info.details.map((detail, idx) => (
-                        <p key={idx} className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                        <p key={idx} className="text-sm sm:text-base text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
                           {detail}
                         </p>
                       ))}
@@ -155,12 +156,12 @@ const ContactSection = () => {
             </div>
 
             {/* Business Hours */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                <Clock className="w-6 h-6 text-hrc-red mr-3" />
-                <h4 className="text-xl font-bold text-hrc-blue">Business Hours</h4>
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-hrc-red mr-2 sm:mr-3" />
+                <h4 className="text-lg sm:text-xl font-bold text-hrc-blue">Business Hours</h4>
               </div>
-              <div className="space-y-2 text-gray-600">
+              <div className="space-y-2 text-sm sm:text-base text-gray-600">
                 <div className="flex justify-between">
                   <span>Monday - Friday:</span>
                   <span>8:00 AM - 6:00 PM</span>
@@ -177,13 +178,14 @@ const ContactSection = () => {
             </div>
 
             {/* Map Placeholder */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h4 className="text-xl font-bold text-hrc-blue mb-4">Find Us</h4>
-              <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+              <h4 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4">Find Us</h4>
+              <div className="w-full h-48 sm:h-64 bg-gray-200 rounded-lg flex items-center justify-center">
                 <div className="text-center text-gray-500">
-                  <MapPin size={48} className="mx-auto mb-2" />
-                  <p>Interactive Map</p>
-                  <p className="text-sm">Accra, Ghana</p>
+                  <MapPin size={36} className="mx-auto mb-2 sm:hidden" />
+                  <MapPin size={48} className="mx-auto mb-2 hidden sm:block" />
+                  <p className="text-sm sm:text-base">Interactive Map</p>
+                  <p className="text-xs sm:text-sm">Accra, Ghana</p>
                 </div>
               </div>
             </div>
@@ -191,8 +193,8 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className={`${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
-            <div className="bg-white p-8 rounded-2xl shadow-2xl">
-              <h3 className="text-2xl font-bold text-hrc-blue mb-6">Send us a Message</h3>
+            <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-2xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-hrc-blue mb-4 sm:mb-6">Send us a Message</h3>
               
               {isSubmitted ? (
                 <div className="text-center py-12">

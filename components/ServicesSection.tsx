@@ -114,40 +114,41 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-hrc-blue mb-4">
+        <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Our Core Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive solutions designed to empower your growth and success across multiple domains
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <div
                 key={service.title}
-                className={`group bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red ${
+                className={`group bg-white rounded-xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red ${
                   isVisible ? 'animate-slide-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: service.delay }}
               >
                 {/* Hexagonal Icon */}
-                <div className="relative mb-6">
-                  <div className={`w-20 h-20 hexagon ${service.color} flex items-center justify-center mx-auto transition-transform duration-300 group-hover:scale-110`}>
-                    <IconComponent size={32} />
+                <div className="relative mb-4 sm:mb-6">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 hexagon ${service.color} flex items-center justify-center mx-auto transition-transform duration-300 group-hover:scale-110`}>
+                    <IconComponent size={24} className="sm:hidden" />
+                    <IconComponent size={32} className="hidden sm:block" />
                   </div>
                 </div>
 
                 {/* Service Title */}
-                <h3 className="text-xl font-bold text-hrc-blue mb-4 text-center group-hover:text-hrc-red transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4 text-center group-hover:text-hrc-red transition-colors duration-300">
                   {service.title}
                 </h3>
 
@@ -172,12 +173,12 @@ const ServicesSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className={`text-center mt-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
-          <div className="bg-white rounded-xl p-8 shadow-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-hrc-blue mb-4">
+        <div className={`text-center mt-10 sm:mt-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
+          <div className="bg-white rounded-xl p-5 sm:p-8 shadow-lg max-w-4xl mx-auto">
+            <h3 className="text-xl sm:text-2xl font-bold text-hrc-blue mb-3 sm:mb-4">
               Ready to Transform Your Business?
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
               Let us help you achieve your goals with our comprehensive range of professional services.
             </p>
             <button
@@ -185,7 +186,7 @@ const ServicesSection = () => {
                 const element = document.querySelector('#contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-hrc-red hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="bg-hrc-red hover:bg-red-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
               Get Started Today
             </button>

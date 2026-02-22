@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -40,10 +41,8 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <div className="flex items-center space-x-2 cursor-pointer">
-                <div className="w-10 h-10 bg-hrc-red rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">H</span>
-                </div>
+              <div className="flex items-center space-x-3 cursor-pointer">
+                <Logo className="w-12 h-12" isScrolled={isScrolled} />
                 <div className="hidden sm:block">
                   <h1 className={`text-xl font-bold ${isScrolled ? 'text-hrc-blue' : 'text-white'}`}>
                     HEDGE RESOURCE CENTRE
@@ -57,10 +56,10 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navItems.map((item) => (
               <Link key={item.name} href={item.href}>
-                <span className={`text-sm font-medium transition-colors duration-200 hover:text-hrc-red ${
+                <span className={`text-xs lg:text-sm font-medium transition-colors duration-200 hover:text-hrc-red ${
                   isScrolled ? 'text-gray-700' : 'text-white'
                 }`}>
                   {item.name}

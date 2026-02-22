@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Block internal/private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404
+
+# Crawl-delay for polite crawling
+Crawl-delay: 10
+
+# Sitemaps
 Sitemap: https://www.hrcghana.com/sitemap.xml
