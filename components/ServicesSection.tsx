@@ -47,7 +47,7 @@ const ServicesSection = () => {
         'Continuing Professional Development',
         'Tutorial Classes'
       ],
-      color: 'bg-blue-100 text-hrc-blue',
+      color: 'bg-hrc-blue text-white',
       delay: '0ms'
     },
     {
@@ -58,7 +58,7 @@ const ServicesSection = () => {
         'TVET Skills',
         'Critical Technical Skills'
       ],
-      color: 'bg-green-100 text-green-700',
+      color: 'bg-hrc-red text-white',
       delay: '200ms'
     },
     {
@@ -71,7 +71,7 @@ const ServicesSection = () => {
         'Internet and Technology',
         'Sales and Marketing'
       ],
-      color: 'bg-purple-100 text-purple-700',
+      color: 'bg-hrc-blue text-white',
       delay: '400ms'
     },
     {
@@ -83,7 +83,7 @@ const ServicesSection = () => {
         'Community Profiling',
         'Technical Writing'
       ],
-      color: 'bg-orange-100 text-orange-700',
+      color: 'bg-hrc-red text-white',
       delay: '600ms'
     },
     {
@@ -95,7 +95,7 @@ const ServicesSection = () => {
         'Community Assessment',
         'Business Assessment'
       ],
-      color: 'bg-red-100 text-hrc-red',
+      color: 'bg-hrc-blue text-white',
       delay: '800ms'
     },
     {
@@ -108,7 +108,7 @@ const ServicesSection = () => {
         'Project Management',
         'Funding Strategies and more...'
       ],
-      color: 'bg-indigo-100 text-indigo-700',
+      color: 'bg-hrc-red text-white',
       delay: '1000ms'
     }
   ];
@@ -118,13 +118,17 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="block w-8 h-px bg-hrc-red"></span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">What We Offer</span>
+            <span className="block w-8 h-px bg-hrc-red"></span>
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Our Core Services
           </h2>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
             Comprehensive solutions designed to empower your growth and success across multiple domains
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Services Grid */}
@@ -134,7 +138,7 @@ const ServicesSection = () => {
             return (
               <div
                 key={service.title}
-                className={`group bg-white rounded-xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red ${
+                className={`relative group bg-white rounded-xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red ${
                   isVisible ? 'animate-slide-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: service.delay }}

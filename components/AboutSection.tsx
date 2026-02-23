@@ -48,16 +48,21 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 bg-gray-50">
+    <section id="about" className="py-12 sm:py-16 md:py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Content */}
           <div className={`space-y-6 sm:space-y-8 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-4 sm:mb-6">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-3">
+                <span className="block w-8 h-px bg-hrc-red flex-shrink-0"></span>
+                <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Who We Are</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-1 sm:mb-2">
                 About Us
               </h2>
-              <div className="w-24 h-1 bg-hrc-red mb-6 sm:mb-8"></div>
+              <div className="w-16 h-1 bg-hrc-red mb-6 sm:mb-8"></div>
 
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
                 Since <span className="font-bold text-hrc-red">2004</span>, we have been executing our services and projects to achieve outcomes such as Quality Education, Poverty Reduction, Hunger Eradication, Industry and Innovation, Economic Empowerment, and Sustainable Communities.
@@ -134,6 +139,11 @@ const AboutSection = () => {
         {/* Values Section */}
         <div className={`mt-12 sm:mt-16 md:mt-20 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '800ms' }}>
           <div className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="block w-8 h-px bg-hrc-red"></span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Our Foundation</span>
+              <span className="block w-8 h-px bg-hrc-red"></span>
+            </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-hrc-blue mb-3 sm:mb-4">Our Core Values</h3>
             <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
               The principles that guide everything we do and define who we are as an organization

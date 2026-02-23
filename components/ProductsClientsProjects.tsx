@@ -93,13 +93,17 @@ const ProductsClientsProjects = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-8 sm:mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="block w-8 h-px bg-hrc-red"></span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Our Portfolio</span>
+            <span className="block w-8 h-px bg-hrc-red"></span>
+          </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Products, Clients & Projects
           </h2>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
             Discover our comprehensive offerings, diverse clientele, and impactful projects
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Tab Navigation */}

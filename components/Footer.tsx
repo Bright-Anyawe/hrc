@@ -38,18 +38,21 @@ const Footer = () => {
 
   return (
     <footer className="bg-hrc-blue text-white">
+      {/* Top red accent bar */}
+      <div className="h-1 bg-hrc-red"></div>
+
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4 sm:mb-6">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-base sm:text-lg">H</span>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-base sm:text-lg tracking-widest">H</span>
               </div>
               <div className="min-w-0">
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold leading-tight">HEDGE RESOURCE CENTRE</h3>
-                <p className="text-xs sm:text-sm text-gray-300">Leader in resource consulting</p>
+                <h3 className="text-base sm:text-lg font-bold leading-tight tracking-wide">HEDGE RESOURCE CENTRE</h3>
+                <p className="text-xs tracking-widest uppercase text-hrc-red mt-0.5">Leader in resource consulting</p>
               </div>
             </div>
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
@@ -74,7 +77,8 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Our Services</h4>
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Our Services</h4>
+            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service}>
@@ -91,7 +95,8 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Quick Links</h4>
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Quick Links</h4>
+            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -108,7 +113,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">Contact Info</h4>
+            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Contact Info</h4>
+            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start space-x-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />

@@ -114,13 +114,17 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="block w-8 h-px bg-hrc-red"></span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Reach Us</span>
+            <span className="block w-8 h-px bg-hrc-red"></span>
+          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Get in Touch
           </h2>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
             Ready to transform your business? Contact us today and let's discuss how we can help you achieve your goals.
           </p>
-          <div className="w-24 h-1 bg-hrc-red mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">

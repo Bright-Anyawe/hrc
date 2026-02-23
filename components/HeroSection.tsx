@@ -72,62 +72,71 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className={`text-white space-y-6 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3">
+                <span className="block w-8 h-px bg-hrc-red flex-shrink-0"></span>
+                <span className="text-xs font-semibold tracking-widest uppercase text-gray-300">
+                  Hedge Resource Centre
+                </span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
                 {slides[currentSlide].title}
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-yellow-300">
+              {/* Red accent rule */}
+              <div className="w-16 h-1 bg-hrc-red"></div>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-yellow-300 tracking-wide">
                 {slides[currentSlide].subtitle}
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl leading-relaxed">
                 {slides[currentSlide].description}
               </p>
             </div>
 
             {/* Call to Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 onClick={() => scrollToSection('#services')}
-                className="bg-hrc-red hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center"
+                className="bg-hrc-red hover:bg-red-800 text-white px-6 sm:px-8 py-3 rounded-none text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:shadow-xl flex items-center justify-center"
               >
                 Explore Services
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 onClick={() => scrollToSection('#contact')}
                 variant="outline"
-                className="border-2 border-white bg-black/20 text-white hover:bg-hrc-red hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-lg flex items-center justify-center"
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-hrc-blue px-6 sm:px-8 py-3 rounded-none text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center"
               >
                 Contact Us
-                <PlayCircle className="ml-2 h-5 w-5" />
+                <PlayCircle className="ml-2 h-4 w-4" />
               </Button>
             </div>
 
             {/* Statistics */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 sm:pt-6 border-t border-white/20">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   <Counter target={15} />+
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-200">Years Experience</div>
+                <div className="text-xs tracking-widest uppercase text-gray-400 mt-1">Years</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
+              <div className="text-center border-x border-white/20">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   <Counter target={1000} />+
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-200">Clients Served</div>
+                <div className="text-xs tracking-widest uppercase text-gray-400 mt-1">Clients</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-300">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   <Counter target={50} />+
                 </div>
-                <div className="text-xs sm:text-sm md:text-base text-gray-200">Projects Completed</div>
+                <div className="text-xs tracking-widest uppercase text-gray-400 mt-1">Projects</div>
               </div>
             </div>
           </div>
 
           {/* Image Content */}
-          <div className={`flex justify-center lg:justify-end ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
-            <div className="relative">
+          <div className={`flex justify-center lg:justify-end overflow-hidden ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
+            <div className="relative p-6">
               <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600"

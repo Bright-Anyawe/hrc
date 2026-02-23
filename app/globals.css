@@ -38,8 +38,13 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    overflow-x: hidden;
   }
 }
 
@@ -68,70 +73,89 @@
   .text-hrc-blue {
     color: var(--hrc-blue);
   }
-  
+
+  /* ─── Corporate eyebrow label ─── */
+  .eyebrow {
+    @apply text-xs font-semibold tracking-widest uppercase text-hrc-red;
+  }
+
+  /* ─── Centered eyebrow with flanking rules ─── */
+  .eyebrow-centered {
+    @apply flex items-center justify-center gap-3;
+  }
+  .eyebrow-centered::before,
+  .eyebrow-centered::after {
+    content: '';
+    @apply block w-8 h-px bg-hrc-red;
+  }
+
+  /* ─── Left-aligned eyebrow with leading rule ─── */
+  .eyebrow-left {
+    @apply flex items-center gap-3;
+  }
+  .eyebrow-left::before {
+    content: '';
+    @apply block w-8 h-px bg-hrc-red flex-shrink-0;
+  }
+
+  /* ─── Section heading block (centered) ─── */
+  .section-header {
+    @apply text-center mb-10 sm:mb-16;
+  }
+
+  /* ─── Corporate button: solid red ─── */
+  .btn-corporate {
+    @apply bg-hrc-red text-white text-xs sm:text-sm font-semibold tracking-widest uppercase
+           px-6 sm:px-8 py-3 rounded-none transition-all duration-300
+           hover:bg-red-800 hover:shadow-lg;
+  }
+
+  /* ─── Corporate button: outlined ─── */
+  .btn-corporate-outline {
+    @apply border-2 border-white text-white text-xs sm:text-sm font-semibold tracking-widest uppercase
+           px-6 sm:px-8 py-3 rounded-none transition-all duration-300
+           hover:bg-white hover:text-hrc-blue;
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.6s ease-in forwards;
   }
-  
+
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
-  
+
   .animate-slide-in-left {
     animation: slideInLeft 0.8s ease-out forwards;
   }
-  
+
   .animate-slide-in-right {
     animation: slideInRight 0.8s ease-out forwards;
   }
-  
+
   .hexagon {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .section-transition {
@@ -141,11 +165,10 @@
 .hover-lift {
   transition: transform 0.3s ease;
 }
-
 .hover-lift:hover {
   transform: translateY(-5px);
 }
 
 .gradient-overlay {
-  background: linear-gradient(135deg, rgba(237, 28, 36, 0.9) 0%, rgba(0, 35, 102, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(237, 28, 36, 0.88) 0%, rgba(0, 35, 102, 0.92) 100%);
 }
