@@ -169,6 +169,18 @@
   transform: translateY(-5px);
 }
 
+/* ─── Calendly inline widget ─── */
+.booking-calendly {
+  width: 100%;
+}
+
+.booking-calendly .calendly-inline-widget,
+.booking-calendly .calendly-inline-widget iframe {
+  min-height: 700px !important;
+  height: 100% !important;
+  overflow: visible !important;
+}
+
 .gradient-overlay {
   background: linear-gradient(135deg, rgba(237, 28, 36, 0.88) 0%, rgba(0, 35, 102, 0.92) 100%);
 }

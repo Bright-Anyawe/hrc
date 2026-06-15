@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowRight, PlayCircle, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Counter from './Counter';
 
@@ -94,9 +95,16 @@ const HeroSection = () => {
 
             {/* Call to Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button asChild className="bg-hrc-red hover:bg-red-800 text-white px-6 sm:px-8 py-3 rounded-none text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:shadow-xl flex items-center justify-center w-full sm:w-auto">
+                <Link href="/booking">
+                  Book Appointment
+                  <Calendar className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
               <Button
                 onClick={() => scrollToSection('#services')}
-                className="bg-hrc-red hover:bg-red-800 text-white px-6 sm:px-8 py-3 rounded-none text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:shadow-xl flex items-center justify-center"
+                variant="outline"
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-hrc-blue px-6 sm:px-8 py-3 rounded-none text-xs sm:text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center"
               >
                 Explore Services
                 <ArrowRight className="ml-2 h-4 w-4" />

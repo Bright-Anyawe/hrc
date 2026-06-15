@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { 
   GraduationCap, 
@@ -13,7 +14,8 @@ import {
   Calculator,
   TrendingUp,
   FileText,
-  Target
+  Target,
+  Calendar
 } from 'lucide-react';
 
 const ServicesSection = () => {
@@ -185,15 +187,24 @@ const ServicesSection = () => {
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
               Let us help you achieve your goals with our comprehensive range of professional services.
             </p>
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="bg-hrc-red hover:bg-red-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
-            >
-              Get Started Today
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/booking"
+                className="bg-hrc-red hover:bg-red-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 inline-flex items-center justify-center gap-2"
+              >
+                <Calendar size={18} />
+                Book a Consultation
+              </Link>
+              <button
+                onClick={() => {
+                  const element = document.querySelector('#contact');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="border-2 border-hrc-blue text-hrc-blue hover:bg-hrc-blue hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg"
+              >
+                Get Started Today
+              </button>
+            </div>
           </div>
         </div>
       </div>

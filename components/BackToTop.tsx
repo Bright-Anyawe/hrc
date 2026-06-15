@@ -2,11 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
+  const isBookingPage = pathname === '/booking' || pathname.startsWith('/booking/');
 
   useEffect(() => {
+    if (isBookingPage) return;
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
         setIsVisible(true);
@@ -17,7 +21,7 @@ const BackToTop = () => {
 
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
+  }, [isBookingPage]);
 
   const scrollToTop = () => {
     window.scrollTo({

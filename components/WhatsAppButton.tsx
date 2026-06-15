@@ -1,8 +1,12 @@
 'use client';
 
 import { FaWhatsapp } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
 
 const WhatsAppButton = () => {
+  const pathname = usePathname();
+  if (pathname === '/booking' || pathname.startsWith('/booking/')) return null;
+
   const whatsappUrl = `https://wa.me/233591481815?text=Hello%2C%20I'm%20interested%20in%20your%20services.`;
 
   return (

@@ -120,6 +120,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import BookNowButton from '@/components/BookNowButton';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -241,6 +242,7 @@ export default function RootLayout({
         <Footer />
         <BackToTop />
         <WhatsAppButton />
+        <BookNowButton />
       </body>
     </html>
   );
