@@ -97,7 +97,11 @@ const AboutSection = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Professional team meeting"
+                  alt="Professional team meeting at Hedge Resource Centre Ghana — consulting and training experts"
+                  width={800}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 sm:h-72 md:h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-hrc-blue/20 to-transparent"></div>

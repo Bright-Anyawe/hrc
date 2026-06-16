@@ -1,40 +1,33 @@
 'use client';
 
+import Link from 'next/link';
 import { Phone, Mail, Globe, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    'Training & Tutoring',
-    'Skills Development',
-    'Administrative Support',
-    'Research Services',
-    'Assessment Services',
-    'Advisory Services'
+    { name: 'Training & Tutoring', href: '/services' },
+    { name: 'Skills Development', href: '/services' },
+    { name: 'Administrative Support', href: '/services' },
+    { name: 'Research Services', href: '/services' },
+    { name: 'Assessment Services', href: '/services' },
+    { name: 'Advisory Services', href: '/services' }
   ];
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Why Choose Us', href: '/why-choose-us' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Book Appointment', href: '/booking' },
+    { name: 'Contact', href: '/contact' }
   ];
 
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' }
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const iconMap: Record<string, React.ElementType> = { Facebook, Twitter, Linkedin, Instagram };
+  const socialLinks = SOCIAL_LINKS.map((s) => ({ href: s.url, icon: iconMap[s.icon], label: s.label }));
 
   return (
     <footer className="bg-hrc-blue text-white">
@@ -65,6 +58,8 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red rounded-full flex items-center justify-center hover:bg-white hover:text-hrc-red transition-all duration-300 hover:scale-110"
                   aria-label={social.label}
                 >
@@ -81,13 +76,13 @@ const Footer = () => {
             <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <button
-                    onClick={() => scrollToSection('#services')}
-                    className="text-sm sm:text-base text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300 text-left"
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300"
                   >
-                    {service}
-                  </button>
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -100,12 +95,12 @@ const Footer = () => {
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-sm sm:text-base text-gray-300 hover:text-white hover:text-hrc-red transition-colors duration-300"
+                  <Link
+                    href={link.href}
+                    className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300"
                   >
                     {link.name}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -145,22 +140,24 @@ const Footer = () => {
 
       {/* Newsletter Section */}
       <div className="border-t border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left">
               <h4 className="text-base sm:text-lg font-bold mb-1 sm:mb-2">Stay Updated</h4>
               <p className="text-sm sm:text-base text-gray-300">Subscribe to our newsletter for latest updates and insights</p>
             </div>
-            <div className="flex w-full md:w-auto">
+            <form className="flex w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
+              <label htmlFor="footer-email" className="sr-only">Email address for newsletter</label>
               <input
+                id="footer-email"
                 type="email"
                 placeholder="Enter your email"
+                autoComplete="email"
                 className="px-3 sm:px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red"
               />
-              <button className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap">
+              <button type="submit" className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap">
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -173,15 +170,7 @@ const Footer = () => {
               © {currentYear} Hedge Resource Centre. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
-              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white text-xs sm:text-sm transition-colors duration-300">
-                Sitemap
-              </a>
+              <span className="text-gray-400 text-xs sm:text-sm">hrcghana.com</span>
             </div>
           </div>
         </div>

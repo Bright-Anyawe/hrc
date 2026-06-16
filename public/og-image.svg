@@ -1,0 +1,110 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#001a4d"/>
+      <stop offset="100%" stop-color="#002366"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ed1c24"/>
+      <stop offset="100%" stop-color="#cc0011"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Decorative pattern - subtle grid -->
+  <g opacity="0.04">
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="30" x2="1200" y2="30" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="60" x2="1200" y2="60" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="90" x2="1200" y2="90" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="150" x2="1200" y2="150" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="180" x2="1200" y2="180" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="210" x2="1200" y2="210" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="270" x2="1200" y2="270" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="330" x2="1200" y2="330" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="390" x2="1200" y2="390" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="450" x2="1200" y2="450" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="480" x2="1200" y2="480" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="510" x2="1200" y2="510" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="540" x2="1200" y2="540" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="570" x2="1200" y2="570" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="630" x2="1200" y2="630" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Decorative circle elements -->
+  <circle cx="1050" cy="100" r="180" fill="none" stroke="#ed1c24" stroke-width="1" opacity="0.15"/>
+  <circle cx="1100" cy="50" r="120" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.05"/>
+  <circle cx="150" cy="550" r="200" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.05"/>
+  <circle cx="200" cy="500" r="100" fill="none" stroke="#ed1c24" stroke-width="1" opacity="0.1"/>
+
+  <!-- Red accent bar at top -->
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accentGrad)"/>
+
+  <!-- Left red accent bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#ed1c24" opacity="0.8"/>
+
+  <!-- Logo placeholder - red square with H -->
+  <rect x="80" y="100" width="70" height="70" rx="4" fill="#ed1c24"/>
+  <text x="115" y="150" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle">H</text>
+
+  <!-- Company Name -->
+  <text x="170" y="140" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="900" fill="#ffffff" letter-spacing="4">
+    HEDGE RESOURCE
+  </text>
+  <text x="170" y="175" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="900" fill="#ffffff" letter-spacing="4">
+    CENTRE
+  </text>
+
+  <!-- Tagline -->
+  <text x="80" y="230" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#ed1c24" letter-spacing="6">
+    LEADER IN RESOURCE CONSULTING
+  </text>
+
+  <!-- Divider -->
+  <rect x="80" y="260" width="80" height="3" fill="#ed1c24" rx="1"/>
+
+  <!-- Main headline -->
+  <text x="80" y="320" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" fill="#ffffff">
+    Empowering Growth &amp;
+  </text>
+  <text x="80" y="375" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" fill="#ffffff">
+    Development Since 2004
+  </text>
+
+  <!-- Description -->
+  <text x="80" y="430" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#b0c4de" opacity="0.9">
+    Training • Skills Development • Research • Advisory • Assessment
+  </text>
+
+  <!-- Contact info bar at bottom -->
+  <rect x="0" y="540" width="1200" height="90" fill="#001133" opacity="0.6"/>
+  
+  <text x="80" y="575" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#b0c4de">
+    0302907115
+  </text>
+  <text x="280" y="575" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#b0c4de">
+    info@hrcghana.com
+  </text>
+  <text x="560" y="575" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#b0c4de">
+    www.hrcghana.com
+  </text>
+
+  <text x="80" y="605" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#6a8aaa">
+    Accra, Ghana  |  Mon-Fri 8AM-6PM  |  Sat 9AM-4PM
+  </text>
+
+  <!-- Right side decorative elements -->
+  <rect x="950" y="100" width="200" height="200" rx="100" fill="none" stroke="#ed1c24" stroke-width="2" opacity="0.2"/>
+  <rect x="970" y="120" width="160" height="160" rx="80" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="624" width="1200" height="6" fill="url(#accentGrad)"/>
+</svg>

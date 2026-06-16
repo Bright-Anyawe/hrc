@@ -87,13 +87,13 @@ const Header = () => {
                 <div className="flex items-center space-x-3 cursor-pointer">
                   <Logo className="w-10 h-10 md:w-12 md:h-12" isScrolled={isScrolled} />
                   <div className="hidden sm:block">
-                    <h1
+                    <span
                       className={`text-base md:text-lg font-bold tracking-wide ${
                         isScrolled ? 'text-hrc-blue' : 'text-white'
                       }`}
                     >
                       HEDGE RESOURCE CENTRE
-                    </h1>
+                    </span>
                     <p
                       className={`text-xs tracking-widest uppercase ${
                         isScrolled ? 'text-hrc-red' : 'text-gray-300'

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | Hedge Resource Centre Ghana',
   },
   description:
-    'Hedge Resource Centre (HRC Ghana) — Over 15 years of expert resource consulting, professional training, skills development, research, and advisory services in Accra, Ghana. Call 0302907115.',
+    'HRC Ghana (Hedge Resource Centre) — Since 2004, Ghana\'s trusted leader in resource consulting, professional training & TVET, skills development, research, and advisory services in Accra. Call 0302907115 for expert business consulting, staff training, CPD, and project management solutions.',
   keywords: [
     'HRC Ghana',
     'Hedge Resource Centre',
@@ -47,6 +47,17 @@ export const metadata: Metadata = {
     'HRC Accra',
     'consulting firm Ghana',
     'professional services Ghana',
+    'HRC consulting services Ghana',
+    'HRC training programs Ghana',
+    'HRC career development Accra',
+    'HRC advisory Accra Ghana',
+    'Hedge Resource Centre consulting',
+    'best consulting firm Ghana',
+    'top training company Ghana',
+    'Ghana resource centre',
+    'GH resource consulting',
+    'resource centre Accra',
+    'HRC resource centre Ghana',
   ],
   authors: [{ name: 'Hedge Resource Centre', url: siteUrl }],
   creator: 'Hedge Resource Centre',
@@ -81,9 +92,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@hrcghana',
+    creator: '@hrcghana',
     title: 'Hedge Resource Centre (HRC) | Resource Consulting Ghana',
     description:
-      'Expert resource consulting, professional training & skills development in Ghana. Over 15 years of excellence. Contact HRC today.',
+      'Expert resource consulting, professional training & skills development in Ghana since 2004. Trusted by 1000+ clients. Call 0302907115.',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -102,6 +115,13 @@ export const metadata: Metadata = {
   verification: {
     google: 'add-your-google-search-console-verification-code-here',
   },
+  referrer: 'origin-when-cross-origin',
+  applicationName: 'Hedge Resource Centre Ghana',
+  appleWebApp: {
+    capable: true,
+    title: 'HRC Ghana',
+    statusBarStyle: 'black-translucent',
+  },
   other: {
     'geo.region': 'GH-AA',
     'geo.placename': 'Accra, Ghana',
@@ -113,6 +133,8 @@ export const metadata: Metadata = {
     'rating': 'general',
     'language': 'English',
     'copyright': 'Hedge Resource Centre',
+    'DC.subject': 'Resource Consulting, Professional Training, Skills Development, Business Advisory Ghana, HRC, Hedge Resource Centre, HR Consulting Ghana',
+    'DC.title': 'Hedge Resource Centre (HRC) Ghana - Leader in Resource Consulting',
   },
 };
 
@@ -121,6 +143,7 @@ import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import BookNowButton from '@/components/BookNowButton';
+import { SAME_AS_URLS } from '@/lib/constants';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -173,7 +196,7 @@ const organizationSchema = {
     },
   ],
   email: 'info@hrcghana.com',
-  sameAs: [siteUrl],
+  sameAs: [siteUrl, ...SAME_AS_URLS],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'HRC Services',
@@ -235,10 +258,25 @@ export default function RootLayout({
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://images.pexels.com" />
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="alternate icon" href="/logo.png" type="image/png" />
+        <meta name="theme-color" content="#002366" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={inter.className}>
+        {/* Skip to main content link for accessibility and SEO */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[100] focus:px-4 focus:py-3 focus:bg-hrc-red focus:text-white focus:font-semibold focus:text-sm"
+        >
+          Skip to main content
+        </a>
         <Header />
-        {children}
+        <div id="main-content">{children}</div>
         <Footer />
         <BackToTop />
         <WhatsAppButton />

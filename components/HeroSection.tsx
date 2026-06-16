@@ -148,7 +148,11 @@ const HeroSection = () => {
               <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Professional African businesswoman"
+                  alt="Professional African businesswoman at HRC Ghana — leader in resource consulting since 2004"
+                  width={384}
+                  height={384}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -166,6 +170,7 @@ const HeroSection = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`Go to slide ${index + 1}: ${slides[index].title}`}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide ? 'bg-white' : 'bg-white/50'
             }`}
