@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ArrowRight, PlayCircle, Calendar } from 'lucide-react';
@@ -145,15 +146,14 @@ const HeroSection = () => {
           {/* Image Content */}
           <div className={`flex justify-center lg:justify-end overflow-hidden ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
             <div className="relative p-6">
-              <div className="w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600"
+              <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 sm:border-8 border-white shadow-2xl">
+                <Image
+                  src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1080"
                   alt="Professional African businesswoman at HRC Ghana — leader in resource consulting since 2004"
-                  width={384}
-                  height={384}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 640px) 224px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                  priority
+                  className="object-cover"
                 />
               </div>
               {/* Decorative elements */}

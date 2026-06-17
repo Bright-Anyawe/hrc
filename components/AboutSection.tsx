@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Award, Target, Globe, Heart } from 'lucide-react';
 
@@ -94,15 +95,13 @@ const AboutSection = () => {
           <div className={`space-y-6 sm:space-y-8 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
             {/* Hero Image */}
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-56 sm:h-72 md:h-80">
+                <Image
+                  src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1280"
                   alt="Professional team meeting at Hedge Resource Centre Ghana — consulting and training experts"
-                  width={800}
-                  height={400}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-56 sm:h-72 md:h-80 object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-hrc-blue/20 to-transparent"></div>
               </div>
