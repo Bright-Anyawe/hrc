@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X, Phone, Mail, Clock } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
+import { trackEvent } from '@/lib/analytics';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,6 +22,7 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
     { name: 'Why Choose Us', href: '/why-choose-us' },
@@ -43,6 +45,7 @@ const Header = () => {
               <a
                 href="tel:0302907115"
                 className="flex items-center gap-1.5 pr-4 hover:text-white transition-colors duration-200"
+                onClick={() => trackEvent('phone_clicked', { phone_number: '0302907115', location: 'top-bar' })}
               >
                 <Phone size={11} className="text-hrc-red" />
                 0302907115
@@ -50,6 +53,7 @@ const Header = () => {
               <a
                 href="tel:0591481815"
                 className="flex items-center gap-1.5 px-4 hover:text-white transition-colors duration-200"
+                onClick={() => trackEvent('phone_clicked', { phone_number: '0591481815', location: 'top-bar' })}
               >
                 <Phone size={11} className="text-hrc-red" />
                 0591481815
@@ -57,6 +61,7 @@ const Header = () => {
               <a
                 href="mailto:info@hrcghana.com"
                 className="flex items-center gap-1.5 pl-4 hover:text-white transition-colors duration-200"
+                onClick={() => trackEvent('email_clicked', { location: 'top-bar' })}
               >
                 <Mail size={11} className="text-hrc-red" />
                 info@hrcghana.com
@@ -144,10 +149,10 @@ const Header = () => {
             <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
               {/* Mobile contact strip */}
               <div className="bg-hrc-blue px-4 py-2 flex flex-col gap-1 text-xs text-gray-300">
-                <a href="tel:0302907115" className="flex items-center gap-2">
+                <a href="tel:0302907115" className="flex items-center gap-2" onClick={() => trackEvent('phone_clicked', { phone_number: '0302907115', location: 'mobile-menu' })}>
                   <Phone size={11} className="text-hrc-red" /> 0302907115
                 </a>
-                <a href="mailto:info@hrcghana.com" className="flex items-center gap-2">
+                <a href="mailto:info@hrcghana.com" className="flex items-center gap-2" onClick={() => trackEvent('email_clicked', { location: 'mobile-menu' })}>
                   <Mail size={11} className="text-hrc-red" /> info@hrcghana.com
                 </a>
               </div>

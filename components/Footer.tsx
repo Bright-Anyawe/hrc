@@ -1,8 +1,94 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, Mail, Globe, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, Mail, Globe, MapPin, Facebook, Twitter, Linkedin, Instagram, CheckCircle, Loader2 } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { trackEvent } from '@/lib/analytics';
+
+/* ─── Newsletter signup form ─── */
+function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        trackEvent('newsletter_signup');
+        setTimeout(() => {
+          setStatus('idle');
+          setEmail('');
+        }, 4000);
+      } else {
+        const data = await res.json();
+        setErrorMsg(data.error || 'Subscription failed. Please try again.');
+        setStatus('error');
+      }
+    } catch {
+      setErrorMsg('Network error. Please try again.');
+      setStatus('error');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <div className="flex items-center gap-2 text-green-300 text-sm font-medium">
+        <CheckCircle size={18} />
+        <span>Subscribed successfully!</span>
+      </div>
+    );
+  }
+
+  return (
+    <form className="flex flex-col w-full md:w-auto relative" onSubmit={handleSubmit}>
+      <div className="flex w-full">
+        <label htmlFor="footer-email" className="sr-only">Email address for newsletter</label>
+        <input
+          id="footer-email"
+          type="email"
+          required
+          value={email}
+          onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle'); }}
+          placeholder="Enter your email"
+          autoComplete="email"
+          className="px-3 sm:px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red"
+          disabled={status === 'loading'}
+        />
+        <button
+          type="submit"
+          disabled={status === 'loading'}
+          className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-1.5"
+        >
+          {status === 'loading' ? (
+            <>
+              <Loader2 size={16} className="animate-spin" />
+              Subscribing...
+            </>
+          ) : (
+            'Subscribe'
+          )}
+        </button>
+      </div>
+      {errorMsg && (
+        <p className="mt-1.5 text-red-300 text-xs">{errorMsg}</p>
+      )}
+    </form>
+  );
+}
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,6 +105,7 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
+    { name: 'Blog', href: '/blog' },
     { name: 'About Us', href: '/about' },
     { name: 'Why Choose Us', href: '/why-choose-us' },
     { name: 'Projects', href: '/projects' },
@@ -131,7 +218,7 @@ const Footer = () => {
 
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-sm sm:text-base text-gray-300">Accra, Ghana</p>
+                <p className="text-sm sm:text-base text-gray-300">Ashiaman, Greater Accra</p>
               </div>
             </div>
           </div>
@@ -145,19 +232,7 @@ const Footer = () => {
               <h4 className="text-base sm:text-lg font-bold mb-1 sm:mb-2">Stay Updated</h4>
               <p className="text-sm sm:text-base text-gray-300">Subscribe to our newsletter for latest updates and insights</p>
             </div>
-            <form className="flex w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
-              <label htmlFor="footer-email" className="sr-only">Email address for newsletter</label>
-              <input
-                id="footer-email"
-                type="email"
-                placeholder="Enter your email"
-                autoComplete="email"
-                className="px-3 sm:px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red"
-              />
-              <button type="submit" className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap">
-                Subscribe
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>

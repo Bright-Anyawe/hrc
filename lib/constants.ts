@@ -13,13 +13,13 @@ export const SITE = {
   phoneDisplayAlt: '0591481815',
   foundingYear: 2004,
   address: {
-    locality: 'Accra',
+    locality: 'Ashiaman',
     country: 'GH',
     region: 'Greater Accra',
   },
   geo: {
-    latitude: 5.6037,
-    longitude: -0.1870,
+    latitude: 5.6995,
+    longitude: -0.0360,
   },
 } as const;
 

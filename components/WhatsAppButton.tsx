@@ -2,6 +2,7 @@
 
 import { FaWhatsapp } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import { trackEvent } from '@/lib/analytics';
 
 const WhatsAppButton = () => {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('whatsapp_clicked', { location: 'floating-button' })}
       className="fixed bottom-8 left-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center"
       aria-label="Contact us on WhatsApp"
     >

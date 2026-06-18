@@ -113,7 +113,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'add-your-google-search-console-verification-code-here',
+    // Set NEXT_PUBLIC_GOOGLE_VERIFICATION in .env.local with your site verification code
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || 'add-your-google-search-console-verification-code-here',
   },
   referrer: 'origin-when-cross-origin',
   applicationName: 'Hedge Resource Centre Ghana',
@@ -143,6 +144,7 @@ import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import BookNowButton from '@/components/BookNowButton';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { SAME_AS_URLS } from '@/lib/constants';
 
 const organizationSchema = {
@@ -164,14 +166,14 @@ const organizationSchema = {
   foundingDate: '2004',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Accra',
+    addressLocality: 'Ashiaman (Greater Accra)',
     addressCountry: 'GH',
     addressRegion: 'Greater Accra',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 5.6037,
-    longitude: -0.1870,
+    latitude: 5.6995,
+    longitude: -0.0360,
   },
   contactPoint: [
     {
@@ -278,6 +280,7 @@ export default function RootLayout({
         <Header />
         <div id="main-content">{children}</div>
         <Footer />
+        <GoogleAnalytics />
         <BackToTop />
         <WhatsAppButton />
         <BookNowButton />

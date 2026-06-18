@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Mail, Globe, MapPin, Send, Clock, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trackEvent } from '@/lib/analytics';
 
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,6 +59,7 @@ const ContactSection = () => {
 
       if (response.ok) {
         setIsSubmitted(true);
+        trackEvent('form_submitted', { service_type: formData.subject || 'general' });
         // Reset form after success message
         setTimeout(() => {
           setIsSubmitted(false);
@@ -104,7 +106,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: 'Location',
-      details: ['Accra, Ghana'],
+      details: ['Ashiaman, Greater Accra'],
       color: 'bg-red-100 text-hrc-red'
     }
   ];
@@ -181,17 +183,25 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Google Map — marker at Ashiaman */}
             <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
               <h4 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4">Find Us</h4>
-              <div className="w-full h-48 sm:h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin size={36} className="mx-auto mb-2 sm:hidden" />
-                  <MapPin size={48} className="mx-auto mb-2 hidden sm:block" />
-                  <p className="text-sm sm:text-base">Interactive Map</p>
-                  <p className="text-xs sm:text-sm">Accra, Ghana</p>
-                </div>
+              <div className="w-full h-48 sm:h-64 rounded-lg overflow-hidden shadow-inner">
+                <iframe
+                  src="https://www.google.com/maps?q=Ashaiman,Ghana&output=embed&z=15"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: 'inherit' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Hedge Resource Centre location in Ashiaman, Ghana"
+                  className="w-full h-full"
+                />
               </div>
+              <p className="text-xs sm:text-sm text-gray-500 mt-3 text-center">
+                Ashiaman, Greater Accra Region, Ghana
+              </p>
             </div>
           </div>
 
