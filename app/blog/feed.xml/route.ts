@@ -36,7 +36,7 @@ export async function GET() {
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE_URL}/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <image>
-      <url>${SITE_URL}/logo.png</url>
+      <url>${SITE_URL}/logo_page-0001.jpg</url>
       <title>HRC Ghana Blog</title>
       <link>${SITE_URL}/blog</link>
     </image>

@@ -156,7 +156,7 @@ const organizationSchema = {
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${siteUrl}/logo.png`,
+    url: `${siteUrl}/logo_page-0001.jpg`,
     width: 200,
     height: 200,
   },
@@ -262,8 +262,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.pexels.com" />
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-        <link rel="alternate icon" href="/logo.png" type="image/png" />
+        <link rel="icon" href="/logo_page-0001.jpg" type="image/jpeg" />
+        <link rel="alternate icon" href="/logo_page-0001.jpg" type="image/jpeg" />
         <meta name="theme-color" content="#002366" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
