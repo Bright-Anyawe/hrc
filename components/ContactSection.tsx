@@ -188,7 +188,7 @@ const ContactSection = () => {
               <h4 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4">Find Us</h4>
               <div className="w-full h-48 sm:h-64 rounded-lg overflow-hidden shadow-inner">
                 <iframe
-                  src="https://www.google.com/maps?q=Ashaiman,Ghana&output=embed&z=15"
+                  src="https://www.google.com/maps?q=5.6833,-0.0333&output=embed&z=15&marker=1"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 'inherit' }}
