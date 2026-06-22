@@ -78,13 +78,13 @@ const AboutSection = () => {
                 <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-t-4 border-hrc-red">
                   <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-2 sm:mb-3">Our Mission</h3>
                   <p className="text-sm sm:text-base text-gray-600">
-                    To empower individuals and organizations through innovative resource consulting, training, and sustainable development solutions.
+                    To equip individuals, communities and organizations with the right resources, strategies, and solutions that drive sustainable growth and profitability.
                   </p>
                 </div>
                 <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-t-4 border-hrc-blue">
                   <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-2 sm:mb-3">Our Vision</h3>
                   <p className="text-sm sm:text-base text-gray-600">
-                    To be the leading catalyst for transformative growth and sustainable development across Africa and beyond.
+                    To be Africa's leading resource development and consulting firm.
                   </p>
                 </div>
               </div>
