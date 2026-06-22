@@ -9,7 +9,7 @@ type LogoProps = {
 const Logo: React.FC<LogoProps> = ({ className = 'w-12 h-12', isScrolled = false }) => {
   return (
     <Image
-      src="/logo_page-0001.jpg"
+      src="/HRC-logo.png"
       alt="Hedge Resource Centre logo"
       width={48}
       height={48}

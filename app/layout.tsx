@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     siteName: 'Hedge Resource Centre',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Hedge Resource Centre — Leader in Resource Consulting Ghana',
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     title: 'Hedge Resource Centre (HRC) | Resource Consulting Ghana',
     description:
       'Expert resource consulting, professional training & skills development in Ghana since 2004. Trusted by 1000+ clients. Call 0302907115.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -156,11 +156,11 @@ const organizationSchema = {
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${siteUrl}/logo_page-0001.jpg`,
+    url: `${siteUrl}/HRC-logo.png`,
     width: 200,
     height: 200,
   },
-  image: `${siteUrl}/og-image.jpg`,
+  image: `${siteUrl}/HRC-logo.png`,
   description:
     'Hedge Resource Centre (HRC) is a leader in resource consulting, providing professional training, skills development, administrative support, research, assessment, and advisory services in Ghana since 2004.',
   foundingDate: '2004',
@@ -262,8 +262,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.pexels.com" />
-        <link rel="icon" href="/logo_page-0001.jpg" type="image/jpeg" />
-        <link rel="alternate icon" href="/logo_page-0001.jpg" type="image/jpeg" />
+        <link rel="icon" href="/HRC-logo.png" type="image/png" />
+        <link rel="alternate icon" href="/HRC-logo.png" type="image/png" />
         <meta name="theme-color" content="#002366" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
