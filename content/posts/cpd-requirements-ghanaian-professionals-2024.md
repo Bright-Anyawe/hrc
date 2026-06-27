@@ -104,11 +104,13 @@ Do not wait until renewal season to think about your CPD. Start now and give you
 
 ---
 
-### Download Our Free CPD Planning Guide
+### Download Our Free Resources
 
-Planning your CPD for the year is easier with a structured framework. Contact us to request our **free CPD Planning Guide** — a practical template to help you map out your professional development for the year ahead.
+Planning your professional development is easier with the right tools and frameworks.
 
-*Email **info@hrcghana.com** with the subject line "CPD Guide" to receive your free copy.*
+**📘 [Download The Ultimate Guide to Professional Development in Ghana](/resources/guide-professional-development-ghana)** — A comprehensive resource covering CPD requirements, TVET pathways, career planning frameworks, and actionable strategies for growth.
+
+**📋 Need help with business registration? [Download our Business Formation Checklist](/resources/business-formation-checklist)** — A step-by-step guide to starting your business in Ghana.
 
 ---
 

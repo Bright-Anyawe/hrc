@@ -21,7 +21,7 @@ import type { SimplePublicObject } from '@hubspot/api-client/lib/codegen/crm/con
 
 /* ─── Types ─── */
 
-export type CrmSource = 'contact-form' | 'booking-details' | 'booking-confirmed';
+export type CrmSource = 'contact-form' | 'booking-details' | 'booking-confirmed' | 'lead-magnet';
 
 export interface CrmPayload {
   source: CrmSource;
@@ -130,7 +130,9 @@ export async function syncToCRM(payload: CrmPayload): Promise<CrmResult> {
           ? `Website Enquiry — ${payload.service || 'General'}`
           : payload.source === 'booking-details'
             ? `Booking Initiated — ${payload.service || 'Consultation'}`
-            : `Booking Confirmed — ${payload.service || 'Consultation'}`;
+            : payload.source === 'booking-confirmed'
+              ? `Booking Confirmed — ${payload.service || 'Consultation'}`
+              : `Lead Magnet Download — ${payload.service || 'Resource'}`;
 
       const deal = await client.crm.deals.basicApi.create({
         properties: {
