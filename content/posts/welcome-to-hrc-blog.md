@@ -37,14 +37,14 @@ Here is what you can look forward to:
 | **Industry Insights** | Research findings, market analysis, sector trends |
 | **CPD & Training** | Continuing professional development, certification programs |
 
-## Our First Post Series
+## Latest Articles
 
-Over the coming weeks, we will be publishing articles on:
+Check out our most recent articles packed with practical insights:
 
-1. **5 Essential Skills for Ghana's Growing Economy**
-2. **How to Choose the Right Business Consultant**
-3. **The Role of TVET in Reducing Unemployment**
-4. **CPD: Why Continuous Learning Matters for Professionals**
+1. **[CPD Requirements for Ghanaian Professionals in 2024](/blog/cpd-requirements-ghanaian-professionals-2024)** — Everything you need to know about CPD credits, compliance, and career progression.
+2. **[5 Ways TVET Skills Development Boosts Ghana's Economy](/blog/tvet-skills-development-boosts-ghana-economy)** — How technical and vocational training drives national prosperity.
+3. **[How to Choose the Right Business Consulting Partner in Accra](/blog/choose-right-business-consulting-partner-accra)** — A practical guide to selecting the best consultant for your business.
+4. **[5 Essential Professional Development Tips for Professionals in Ghana](/blog/professional-development-tips-ghana)** — Stay competitive in Ghana's evolving job market.
 
 ## Stay Connected
 
