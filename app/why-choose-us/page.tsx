@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import AnimatedPage from '@/components/AnimatedPage';
 import PageHero from '@/components/PageHero';
 
@@ -110,6 +111,7 @@ export default function WhyChooseUsPage() {
             backgroundImage="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           />
           <WhyChooseUs />
+          <TestimonialsSection />
         </main>
       </AnimatedPage>
     </>

@@ -25,6 +25,7 @@ const Header = () => {
     { name: 'Blog', href: '/blog' },
     { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/about' },
+    { name: 'Testimonials', href: '/testimonials' },
     { name: 'Why Choose Us', href: '/why-choose-us' },
     { name: 'Book Appointment', href: '/booking' },
     { name: 'Contact', href: '/contact' },
