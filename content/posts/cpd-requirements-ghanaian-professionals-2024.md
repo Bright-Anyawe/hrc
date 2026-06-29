@@ -6,6 +6,10 @@ author: "HRC Ghana Team"
 category: "Professional Development"
 image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["CPD", "continuing professional development", "professional requirements", "Ghana professionals", "training", "HRC Ghana"]
+isPartOf:
+  type: Blog
+  name: HRC Ghana Blog
+  url: https://www.hrcghana.com/blog
 ---
 
 # CPD Requirements for Ghanaian Professionals in 2024

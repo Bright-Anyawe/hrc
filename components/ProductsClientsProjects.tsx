@@ -73,11 +73,11 @@ const ProductsClientsProjects = () => {
       icon: FolderOpen,
       color: 'bg-red-600',
       items: [
-        { name: 'FITT Project', icon: TrendingUp, description: 'Financial Inclusion Technology and Training initiative' },
+        { name: 'FITT Project', icon: TrendingUp, description: 'Foundations in Teaching Training initiative' },
         { name: 'Micro Entrepreneurship Project', icon: Briefcase, description: 'Small business development and support program' },
         { name: 'CPD For All Project', icon: GraduationCap, description: 'Continuing Professional Development for everyone' },
-        { name: 'Rural CTS Project', icon: Building, description: 'Rural Community Technology and Skills development' },
-        { name: 'CDBOKS Project', icon: BookOpen, description: 'Community Development and Knowledge Sharing initiative' }
+        { name: 'Rural CTS Project', icon: Building, description: 'Rural Critical Technical Skills development initiative' },
+        { name: 'CDBOKS Project', icon: BookOpen, description: 'Community Development - Building Others through Knowledge and Service initiative' }
       ]
     }
   };

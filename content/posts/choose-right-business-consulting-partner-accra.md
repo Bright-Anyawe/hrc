@@ -6,6 +6,10 @@ author: "HRC Ghana Team"
 category: "Business Advisory"
 image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["business consulting", "Accra", "choosing a consultant", "Ghana business", "advisory services", "HRC Ghana"]
+isPartOf:
+  type: Blog
+  name: HRC Ghana Blog
+  url: https://www.hrcghana.com/blog
 ---
 
 # How to Choose the Right Business Consulting Partner in Accra

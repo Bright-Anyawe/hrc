@@ -213,6 +213,50 @@ export default function BlogPage({
                 </div>
               </section>
 
+              {/* ── Lead Magnet CTA ── */}
+              <section className="py-12 sm:py-16 bg-gradient-to-br from-hrc-blue to-hrc-blue/95 text-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-4xl mx-auto text-center">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
+                      Free Resources for Your Career & Business
+                    </h3>
+                    <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-sm sm:text-base">
+                      Download our comprehensive guides — packed with actionable insights on professional development and business formation in Ghana.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
+                      <a
+                        href="/resources/guide-professional-development-ghana"
+                        className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-left"
+                      >
+                        <div className="w-10 h-10 bg-hrc-red rounded-lg flex items-center justify-center mb-3">
+                          <span className="text-white font-bold text-sm">G</span>
+                        </div>
+                        <h4 className="font-bold mb-1 group-hover:text-hrc-red transition-colors">
+                          Professional Development Guide
+                        </h4>
+                        <p className="text-gray-400 text-xs sm:text-sm">
+                          CPD requirements, career planning, TVET pathways & more
+                        </p>
+                      </a>
+                      <a
+                        href="/resources/business-formation-checklist"
+                        className="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105 text-left"
+                      >
+                        <div className="w-10 h-10 bg-hrc-red rounded-lg flex items-center justify-center mb-3">
+                          <span className="text-white font-bold text-sm">B</span>
+                        </div>
+                        <h4 className="font-bold mb-1 group-hover:text-hrc-red transition-colors">
+                          Business Formation Checklist
+                        </h4>
+                        <p className="text-gray-400 text-xs sm:text-sm">
+                          Step-by-step guide to register & launch your business in Ghana
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* ── RSS Subscribe CTA ── */}
               <section className="py-12 bg-hrc-blue text-white">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

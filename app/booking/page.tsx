@@ -42,12 +42,58 @@ const breadcrumbSchema = {
   ],
 };
 
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  '@id': `${siteUrl}/booking/#howto`,
+  name: 'How to Book a Consultation with HRC Ghana',
+  description: 'Follow these simple steps to book a consultation with Hedge Resource Centre Ghana for training, skills development, or business advisory services.',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Select a Service',
+      text: 'Choose from our range of services including Training & Tutoring, Skills Development, Administrative Support, Research, Assessment, or Advisory Services.',
+      url: `${siteUrl}/services`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Enter Your Details',
+      text: 'Provide your contact information including your name, email address, phone number, and any notes about your specific needs.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Pick a Date & Time',
+      text: 'Select a convenient date and time for your consultation using our online scheduling calendar. We offer weekday and Saturday appointments.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Confirm Your Booking',
+      text: 'Review your booking details and confirm. You will receive a confirmation email with all the information you need for your consultation.',
+    },
+  ],
+  totalTime: 'PT10M',
+  tool: [
+    {
+      '@type': 'HowToTool',
+      name: 'Internet-connected device',
+    },
+  ],
+};
+
 export default function BookingPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <AnimatedPage>
         <main className="min-h-screen">

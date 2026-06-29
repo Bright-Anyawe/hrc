@@ -1,15 +1,53 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, Mail, Clock } from 'lucide-react';
+import { Menu, X, Phone, Mail, Clock, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { trackEvent } from '@/lib/analytics';
 
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+interface NavGroup {
+  label: string;
+  items: NavItem[];
+}
+
+const navGroups: NavGroup[] = [
+  {
+    label: 'Company',
+    items: [
+      { name: 'About', href: '/about' },
+      { name: 'Projects', href: '/projects' },
+      { name: 'Testimonials', href: '/testimonials' },
+      { name: 'Why Choose Us', href: '/why-choose-us' },
+    ],
+  },
+  {
+    label: 'Services',
+    items: [
+      { name: 'All Services', href: '/services' },
+      { name: 'Pricing', href: '/pricing' },
+    ],
+  },
+  {
+    label: 'Resources',
+    items: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'Guides', href: '/resources/guide-professional-development-ghana' },
+    ],
+  },
+];
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,17 +57,21 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'About', href: '/about' },
-    { name: 'Testimonials', href: '/testimonials' },
-    { name: 'Why Choose Us', href: '/why-choose-us' },
-    { name: 'Book Appointment', href: '/booking' },
-    { name: 'Contact', href: '/contact' },
-  ];
+  const handleMouseEnter = (label: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setOpenDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
+  };
+
+  const textColor = isScrolled ? 'text-gray-700' : 'text-white';
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -41,7 +83,6 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-9 text-xs text-gray-300">
-            {/* Left: contact details */}
             <div className="flex items-center divide-x divide-white/10">
               <a
                 href="tel:0302907115"
@@ -68,7 +109,6 @@ const Header = () => {
                 info@hrcghana.com
               </a>
             </div>
-            {/* Right: business hours */}
             <div className="flex items-center gap-1.5">
               <Clock size={11} className="text-hrc-red" />
               <span>Mon – Fri: 8AM – 6PM &nbsp;|&nbsp; Sat: 9AM – 4PM</span>
@@ -79,7 +119,7 @@ const Header = () => {
 
       {/* ── Main Navigation Bar ── */}
       <div
-        className={`transition-all duration-300 ${
+        className={`transition-[background-color,box-shadow] duration-300 ${
           isScrolled
             ? 'bg-white/97 backdrop-blur-md shadow-md border-b border-gray-100'
             : 'bg-transparent'
@@ -94,14 +134,14 @@ const Header = () => {
                   <Logo className="w-10 h-10 md:w-12 md:h-12" isScrolled={isScrolled} />
                   <div className="hidden sm:block">
                     <span
-                      className={`text-base md:text-lg font-bold tracking-wide ${
+                      className={`text-base md:text-lg font-bold tracking-wide transition-colors duration-300 ${
                         isScrolled ? 'text-hrc-blue' : 'text-white'
                       }`}
                     >
                       HEDGE RESOURCE CENTRE
                     </span>
                     <p
-                      className={`text-xs tracking-widest uppercase ${
+                      className={`text-xs tracking-widest uppercase transition-colors duration-300 ${
                         isScrolled ? 'text-hrc-red' : 'text-gray-300'
                       }`}
                     >
@@ -114,20 +154,72 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              {navItems.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <span
-                    className={`px-3 py-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-200 hover:text-hrc-red ${
-                      isScrolled ? 'text-gray-700' : 'text-white'
+              {/* Home - standalone */}
+              <Link href="/">
+                <span
+                  className={`px-3 py-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 hover:text-hrc-red ${textColor}`}
+                >
+                  Home
+                </span>
+              </Link>
+
+              {/* Dropdown groups */}
+              {navGroups.map((group) => (
+                <div
+                  key={group.label}
+                  className="relative"
+                  onMouseEnter={() => handleMouseEnter(group.label)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button
+                    className={`flex items-center gap-1 px-3 py-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 hover:text-hrc-red ${textColor}`}
+                  >
+                    {group.label}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${
+                        openDropdown === group.label ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+
+                  {/* Dropdown menu */}
+                  <div
+                    className={`absolute top-full left-0 pt-2 transition-all duration-200 ${
+                      openDropdown === group.label
+                        ? 'opacity-100 translate-y-0 pointer-events-auto'
+                        : 'opacity-0 -translate-y-2 pointer-events-none'
                     }`}
                   >
-                    {item.name}
-                  </span>
-                </Link>
+                    <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[180px]">
+                      {group.items.map((item) => (
+                        <Link key={item.name} href={item.href}>
+                          <span
+                            onClick={() => setOpenDropdown(null)}
+                            className="block px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200"
+                          >
+                            {item.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ))}
-              <Link href="/contact" className="ml-4">
+
+              {/* Book Appointment - standalone */}
+              <Link href="/booking">
+                <span
+                  className={`px-3 py-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 hover:text-hrc-red ${textColor}`}
+                >
+                  Book
+                </span>
+              </Link>
+
+              {/* CTA Button */}
+              <Link href="/contact" className="ml-2">
                 <Button className="bg-hrc-red hover:bg-red-800 text-white text-xs font-semibold tracking-widest uppercase px-5 py-2 rounded-none transition-all duration-300 hover:shadow-lg">
-                  Get In Touch
+                  Contact
                 </Button>
               </Link>
             </nav>
@@ -138,7 +230,7 @@ const Header = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`${isScrolled ? 'text-gray-700' : 'text-white'}`}
+                className={`transition-colors duration-300 ${textColor}`}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </Button>
@@ -148,7 +240,6 @@ const Header = () => {
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
             <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-              {/* Mobile contact strip */}
               <div className="bg-hrc-blue px-4 py-2 flex flex-col gap-1 text-xs text-gray-300">
                 <a href="tel:0302907115" className="flex items-center gap-2" onClick={() => trackEvent('phone_clicked', { phone_number: '0302907115', location: 'mobile-menu' })}>
                   <Phone size={11} className="text-hrc-red" /> 0302907115
@@ -158,22 +249,51 @@ const Header = () => {
                 </a>
               </div>
               <div className="px-2 pt-2 pb-4 space-y-1">
-                {navItems.map((item) => (
-                  <Link key={item.name} href={item.href}>
-                    <span
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
-                    >
-                      {item.name}
-                    </span>
-                  </Link>
+                {/* Home */}
+                <Link href="/">
+                  <span
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
+                  >
+                    Home
+                  </span>
+                </Link>
+
+                {/* Grouped items with section headers */}
+                {navGroups.map((group) => (
+                  <div key={group.label}>
+                    <div className="px-4 py-2 text-[10px] font-bold tracking-widest uppercase text-hrc-red">
+                      {group.label}
+                    </div>
+                    {group.items.map((item) => (
+                      <Link key={item.name} href={item.href}>
+                        <span
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block px-6 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
                 ))}
+
+                {/* Book */}
+                <Link href="/booking">
+                  <span
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
+                  >
+                    Book Appointment
+                  </span>
+                </Link>
+
                 <Link href="/contact">
                   <Button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="w-full mt-3 bg-hrc-red hover:bg-red-800 text-white text-xs font-semibold tracking-widest uppercase rounded-none"
                   >
-                    Get In Touch
+                    Contact Us
                   </Button>
                 </Link>
               </div>

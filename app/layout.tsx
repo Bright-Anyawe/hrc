@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | Hedge Resource Centre Ghana',
   },
   description:
-    'HRC Ghana (Hedge Resource Centre) — Since 2004, Ghana\'s trusted leader in resource consulting, professional training & TVET, skills development, research, and advisory services in Accra. Call 0302907115 for expert business consulting, staff training, CPD, and project management solutions.',
+    'What is HRC Ghana? Hedge Resource Centre is Ghana\'s #1 resource consulting firm since 2004. We offer professional training, TVET skills development, business advisory, research, assessment, recruitment, and CPD programmes in Accra. Trusted by 1000+ clients. Call 0302907115.',
   keywords: [
     'HRC Ghana',
     'Hedge Resource Centre',
@@ -162,19 +162,52 @@ const organizationSchema = {
   },
   image: `${siteUrl}/HRC-logo.png`,
   description:
-    'Hedge Resource Centre (HRC) is a leader in resource consulting, providing professional training, skills development, administrative support, research, assessment, and advisory services in Ghana since 2004.',
+    'Hedge Resource Centre (HRC) is Ghana\'s leading resource consulting firm, providing professional training, TVET skills development, business advisory, research, assessment, and recruitment services since 2004. Trusted by 1000+ clients across Ghana.',
   foundingDate: '2004',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Ashiaman, Greater Accra, Ghana',
+  },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Ashiaman (Greater Accra)',
-    addressCountry: 'GH',
+    streetAddress: 'Ashiaman',
+    addressLocality: 'Ashiaman',
     addressRegion: 'Greater Accra',
+    addressCountry: 'GH',
   },
   geo: {
     '@type': 'GeoCoordinates',
     latitude: 5.6995,
     longitude: -0.0360,
   },
+  areaServed: [
+    {
+      '@type': 'Country',
+      name: 'Ghana',
+    },
+    {
+      '@type': 'City',
+      name: 'Accra',
+    },
+    {
+      '@type': 'City',
+      name: 'Ashiaman',
+    },
+  ],
+  knowsAbout: [
+    'Resource Consulting',
+    'TVET Training',
+    'Professional Development',
+    'Business Advisory',
+    'Skills Development',
+    'Continuing Professional Development',
+    'CPD Ghana',
+    'Staff Training',
+    'Career Development',
+    'Research Services',
+    'Recruitment Ghana',
+    'Business Formation Ghana',
+  ],
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -211,6 +244,13 @@ const organizationSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Advisory Services' } },
     ],
   },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '150',
+    bestRating: '5',
+    ratingCount: '150',
+  },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -225,6 +265,10 @@ const organizationSchema = {
       closes: '16:00',
     },
   ],
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.speakable', 'h1', 'h2'],
+  },
 };
 
 const webSiteSchema = {

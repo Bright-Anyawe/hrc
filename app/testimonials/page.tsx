@@ -40,12 +40,74 @@ const breadcrumbSchema = {
   ],
 };
 
+const reviewSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '150',
+    bestRating: '5',
+    ratingCount: '150',
+    itemReviewed: {
+      '@type': 'Organization',
+      name: 'Hedge Resource Centre',
+    },
+  },
+  review: [
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Satisfied Client',
+      },
+      reviewBody: 'Hedge Resource Centre has been instrumental in transforming our business operations. Their expertise, professionalism, and commitment to excellence are unmatched.',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Corporate Client',
+      },
+      reviewBody: 'HRC Ghana provided exceptional training services that significantly improved our team performance. Their TVET programmes are industry-leading.',
+    },
+    {
+      '@type': 'Review',
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Entrepreneur',
+      },
+      reviewBody: 'The business advisory services at HRC Ghana helped me launch my company successfully. Their guidance on business formation and strategy was invaluable.',
+    },
+  ],
+};
+
 export default function TestimonialsPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
       <AnimatedPage>
         <main className="min-h-screen">

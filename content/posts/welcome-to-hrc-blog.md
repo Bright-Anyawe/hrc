@@ -6,6 +6,10 @@ author: "HRC Ghana Team"
 category: "Company News"
 image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["HRC Ghana", "professional development", "blog launch", "resource consulting"]
+isPartOf:
+  type: Blog
+  name: HRC Ghana Blog
+  url: https://www.hrcghana.com/blog
 ---
 
 # Welcome to the HRC Ghana Blog

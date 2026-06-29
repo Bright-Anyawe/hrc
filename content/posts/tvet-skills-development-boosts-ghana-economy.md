@@ -6,6 +6,10 @@ author: "HRC Ghana Team"
 category: "Skills Development"
 image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["TVET", "skills development", "Ghana economy", "vocational training", "employment", "HRC Ghana"]
+isPartOf:
+  type: Blog
+  name: HRC Ghana Blog
+  url: https://www.hrcghana.com/blog
 ---
 
 # 5 Ways TVET Skills Development Boosts Ghana's Economy

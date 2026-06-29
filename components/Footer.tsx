@@ -46,9 +46,9 @@ function NewsletterForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex items-center gap-2 text-green-300 text-sm font-medium">
-        <CheckCircle size={18} />
-        <span>Subscribed successfully!</span>
+      <div className="flex items-center gap-1.5 text-green-300 text-[10px] font-medium">
+        <CheckCircle size={14} />
+        <span>Subscribed!</span>
       </div>
     );
   }
@@ -65,18 +65,18 @@ function NewsletterForm() {
           onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle'); }}
           placeholder="Enter your email"
           autoComplete="email"
-          className="px-3 sm:px-4 py-2 bg-white text-gray-800 rounded-l-lg flex-grow md:w-64 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red"
+          className="px-2 py-1 bg-white text-gray-800 rounded-l flex-grow md:w-44 text-[10px] focus:outline-none focus:ring-1 focus:ring-hrc-red"
           disabled={status === 'loading'}
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="bg-hrc-red hover:bg-red-700 px-4 sm:px-6 py-2 rounded-r-lg text-sm sm:text-base font-semibold transition-colors duration-300 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-1.5"
+          className="bg-hrc-red hover:bg-red-700 px-2 sm:px-3 py-1 rounded-r text-[10px] font-semibold transition-colors duration-300 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-1"
         >
           {status === 'loading' ? (
             <>
-              <Loader2 size={16} className="animate-spin" />
-              Subscribing...
+              <Loader2 size={12} className="animate-spin" />
+              <span className="hidden sm:inline">Subscribing...</span>
             </>
           ) : (
             'Subscribe'
@@ -84,7 +84,7 @@ function NewsletterForm() {
         </button>
       </div>
       {errorMsg && (
-        <p className="mt-1.5 text-red-300 text-xs">{errorMsg}</p>
+        <p className="mt-0.5 text-red-300 text-[9px]">{errorMsg}</p>
       )}
     </form>
   );
@@ -96,20 +96,19 @@ const Footer = () => {
   const services = [
     { name: 'Training & Tutoring', href: '/services' },
     { name: 'Skills Development', href: '/services' },
-    { name: 'Administrative Support', href: '/services' },
-    { name: 'Research Services', href: '/services' },
-    { name: 'Assessment Services', href: '/services' },
-    { name: 'Advisory Services', href: '/services' }
+    { name: 'Admin Support', href: '/services' },
+    { name: 'Research', href: '/services' },
+    { name: 'Assessment', href: '/services' },
+    { name: 'Advisory', href: '/services' }
   ];
 
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Blog', href: '/blog' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Why Choose Us', href: '/why-choose-us' },
+    { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Book Appointment', href: '/booking' },
     { name: 'Contact', href: '/contact' }
   ];
 
@@ -119,39 +118,36 @@ const Footer = () => {
   return (
     <footer className="bg-hrc-blue text-white">
       {/* Top red accent bar */}
-      <div className="h-1 bg-hrc-red"></div>
+      <div className="h-0.5 bg-hrc-red"></div>
 
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      {/* Main Footer Content - 2 column layout */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {/* Company Info */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4 sm:mb-6">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-base sm:text-lg tracking-widest">H</span>
+          <div className="col-span-2 sm:col-span-1">
+            <div className="flex items-center space-x-1.5 mb-1.5">
+              <div className="w-6 h-6 bg-hrc-red flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-[10px] tracking-widest">H</span>
               </div>
               <div className="min-w-0">
-                <h3 className="text-base sm:text-lg font-bold leading-tight tracking-wide">HEDGE RESOURCE CENTRE</h3>
-                <p className="text-xs tracking-widest uppercase text-hrc-red mt-0.5">Leader in resource consulting</p>
+                <h3 className="text-[11px] font-bold leading-tight tracking-wide">HRC GHANA</h3>
+                <p className="text-[8px] tracking-widest uppercase text-hrc-red">Leader in resource consulting</p>
               </div>
             </div>
-            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-              Since 2004, we have been executing our services and projects to achieve Quality Education, Poverty Reduction, and Sustainable Communities.
+            <p className="text-[10px] text-gray-300 mb-1.5 leading-snug">
+              Since 2004 — Quality Education, Poverty Reduction, Sustainable Communities.
             </p>
-
-            {/* Social Links */}
-            <div className="flex space-x-3 sm:space-x-4">
+            <div className="flex space-x-1.5">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-hrc-red rounded-full flex items-center justify-center hover:bg-white hover:text-hrc-red transition-all duration-300 hover:scale-110"
+                  className="w-6 h-6 bg-hrc-red rounded-full flex items-center justify-center hover:bg-white hover:text-hrc-red transition-all duration-300 hover:scale-110"
                   aria-label={social.label}
                 >
-                  <social.icon size={16} className="sm:hidden" />
-                  <social.icon size={18} className="hidden sm:block" />
+                  <social.icon size={11} />
                 </a>
               ))}
             </div>
@@ -159,15 +155,12 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Our Services</h4>
-            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
-            <ul className="space-y-2 sm:space-y-3">
+            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Services</h4>
+            <div className="w-4 h-px bg-hrc-red mb-1"></div>
+            <ul className="space-y-0.5">
               {services.map((service) => (
                 <li key={service.name}>
-                  <Link
-                    href={service.href}
-                    className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300"
-                  >
+                  <Link href={service.href} className="text-[10px] text-gray-300 hover:text-white transition-colors duration-300">
                     {service.name}
                   </Link>
                 </li>
@@ -177,15 +170,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Quick Links</h4>
-            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
-            <ul className="space-y-2 sm:space-y-3">
+            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Links</h4>
+            <div className="w-4 h-px bg-hrc-red mb-1"></div>
+            <ul className="space-y-0.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300"
-                  >
+                  <Link href={link.href} className="text-[10px] text-gray-300 hover:text-white transition-colors duration-300">
                     {link.name}
                   </Link>
                 </li>
@@ -195,57 +185,44 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Contact Info</h4>
-            <div className="w-8 h-px bg-hrc-red mb-4 sm:mb-6"></div>
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-start space-x-3">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-sm sm:text-base text-gray-300">0302907115</p>
-                  <p className="text-sm sm:text-base text-gray-300">0591481815</p>
-                </div>
+            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Contact</h4>
+            <div className="w-4 h-px bg-hrc-red mb-1"></div>
+            <div className="space-y-1">
+              <div className="flex items-center space-x-1.5">
+                <Phone className="w-3 h-3 text-hrc-red flex-shrink-0" />
+                <p className="text-[10px] text-gray-300">0302907115</p>
               </div>
-
-              <div className="flex items-start space-x-3">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-sm sm:text-base text-gray-300 break-all">info@hrcghana.com</p>
+              <div className="flex items-center space-x-1.5">
+                <Phone className="w-3 h-3 text-hrc-red flex-shrink-0" />
+                <p className="text-[10px] text-gray-300">0591481815</p>
               </div>
-
-              <div className="flex items-start space-x-3">
-                <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-sm sm:text-base text-gray-300">www.hrcghana.com</p>
+              <div className="flex items-center space-x-1.5">
+                <Mail className="w-3 h-3 text-hrc-red flex-shrink-0" />
+                <p className="text-[10px] text-gray-300">info@hrcghana.com</p>
               </div>
-
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-hrc-red mt-1 flex-shrink-0" />
-                <p className="text-sm sm:text-base text-gray-300">Ashiaman, Greater Accra</p>
+              <div className="flex items-center space-x-1.5">
+                <MapPin className="w-3 h-3 text-hrc-red flex-shrink-0" />
+                <p className="text-[10px] text-gray-300">Ashiaman, Accra</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Newsletter Section */}
+      {/* Newsletter + Bottom Footer - Single Row */}
       <div className="border-t border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-center md:text-left">
-              <h4 className="text-base sm:text-lg font-bold mb-1 sm:mb-2">Stay Updated</h4>
-              <p className="text-sm sm:text-base text-gray-300">Subscribe to our newsletter for latest updates and insights</p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="flex items-center gap-3">
+              <p className="text-gray-300 text-[9px]">
+                © {currentYear} Hedge Resource Centre. All rights reserved.
+              </p>
+              <span className="text-gray-500 text-[9px]">|</span>
+              <span className="text-gray-400 text-[9px]">hrcghana.com</span>
             </div>
-            <NewsletterForm />
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="border-t border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
-            <p className="text-gray-300 text-xs sm:text-sm text-center sm:text-left">
-              © {currentYear} Hedge Resource Centre. All rights reserved.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
-              <span className="text-gray-400 text-xs sm:text-sm">hrcghana.com</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[9px] text-gray-400">Newsletter:</span>
+              <NewsletterForm />
             </div>
           </div>
         </div>

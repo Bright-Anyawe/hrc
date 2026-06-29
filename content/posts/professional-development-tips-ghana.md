@@ -6,6 +6,10 @@ author: "HRC Ghana Team"
 category: "Career Development"
 image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["professional development", "career tips", "CPD", "Ghana", "training"]
+isPartOf:
+  type: Blog
+  name: HRC Ghana Blog
+  url: https://www.hrcghana.com/blog
 ---
 
 # 5 Essential Professional Development Tips for Professionals in Ghana

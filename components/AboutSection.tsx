@@ -60,7 +60,7 @@ const AboutSection = () => {
                 <span className="block w-8 h-px bg-hrc-red flex-shrink-0"></span>
                 <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Who We Are</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-1 sm:mb-2">
+              <h2 className="speakable text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-1 sm:mb-2">
                 About Us
               </h2>
               <div className="w-16 h-1 bg-hrc-red mb-6 sm:mb-8"></div>
@@ -84,7 +84,7 @@ const AboutSection = () => {
                 <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-t-4 border-hrc-blue">
                   <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-2 sm:mb-3">Our Vision</h3>
                   <p className="text-sm sm:text-base text-gray-600">
-                    To be Africa's leading resource development and consulting firm.
+                    To be Africa&apos;s leading resource development and consulting firm. In our mission to go global, we want to be the first location for a skate park and recreational centre.
                   </p>
                 </div>
               </div>

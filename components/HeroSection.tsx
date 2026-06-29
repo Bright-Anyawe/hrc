@@ -82,7 +82,7 @@ const HeroSection = () => {
                   Hedge Resource Centre
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+              <h1 className="speakable text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
                 {slides[currentSlide].title}
               </h1>
               {/* Red accent rule */}

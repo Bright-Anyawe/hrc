@@ -125,7 +125,7 @@ const ServicesSection = () => {
             <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">What We Offer</span>
             <span className="block w-8 h-px bg-hrc-red"></span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
+          <h2 className="speakable text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
             Our Core Services
           </h2>
           <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
