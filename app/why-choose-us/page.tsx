@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     'Hedge Resource Centre advantages',
     'top consulting firm Ghana',
     'HRC Ghana reliability',
+    'TVET Ghana',
+    'TVET training Ghana',
+    'best TVET provider Ghana',
+    'vocational training Ghana',
+    'skills development Ghana',
   ],
   alternates: { canonical: '/why-choose-us' },
   openGraph: {

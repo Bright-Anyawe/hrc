@@ -22,6 +22,8 @@ export const metadata: Metadata = {
     'HRC consultation booking',
     'HRC Ghana appointment',
     'resource consulting booking Accra',
+    'TVET training appointment Ghana',
+    'book TVET consultation',
   ],
   alternates: { canonical: '/booking' },
   openGraph: {

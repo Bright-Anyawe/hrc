@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     'HRC Ghana email',
     'Hedge Resource Centre Accra location',
     'HRC customer service Ghana',
+    'TVET training contact Ghana',
+    'contact TVET provider Ghana',
   ],
   alternates: { canonical: '/contact' },
   openGraph: {

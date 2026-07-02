@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     'HRC Ghana about us',
     'Hedge Resource Centre team',
     'resource centre Ghana history',
+    'TVET Ghana',
+    'TVET training Ghana',
+    'TVET programmes Ghana',
+    'vocational training Ghana',
+    'skills development Ghana',
   ],
   alternates: { canonical: '/about' },
   openGraph: {

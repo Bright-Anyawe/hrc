@@ -10,6 +10,18 @@ export const metadata: Metadata = {
   title: 'Free Checklist: Business Formation Checklist for Ghana | HRC Ghana',
   description:
     'Download our free step-by-step business formation checklist for Ghana. Register your company, get your TIN, open a bank account, and more.',
+  keywords: [
+    'business formation Ghana',
+    'company registration Ghana',
+    'business checklist Ghana',
+    'start business Ghana',
+    'Ghana business registration',
+    'TIN registration Ghana',
+    'HRC Ghana checklist',
+    'entrepreneur Ghana',
+    'SME Ghana',
+    'business setup Ghana',
+  ],
   alternates: { canonical: '/resources/business-formation-checklist' },
   openGraph: {
     title: 'Free Checklist: Business Formation in Ghana',

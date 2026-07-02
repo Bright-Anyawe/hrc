@@ -10,6 +10,19 @@ export const metadata: Metadata = {
   title: 'Free Guide: The Ultimate Guide to Professional Development in Ghana | HRC Ghana',
   description:
     'Download our free comprehensive guide to professional development in Ghana. Learn about CPD requirements, TVET opportunities, career planning, and more.',
+  keywords: [
+    'professional development Ghana',
+    'CPD Ghana',
+    'TVET Ghana',
+    'TVET opportunities Ghana',
+    'career planning Ghana',
+    'professional training Ghana',
+    'skills development Ghana',
+    'free guide Ghana',
+    'HRC Ghana guide',
+    'vocational training Ghana',
+    'career development Ghana',
+  ],
   alternates: { canonical: '/resources/guide-professional-development-ghana' },
   openGraph: {
     title: 'Free Guide: Professional Development in Ghana',

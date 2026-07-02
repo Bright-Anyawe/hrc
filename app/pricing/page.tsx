@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     'consulting fees Ghana',
     'business advisory pricing',
     'TVET training price',
+    'TVET programme costs Ghana',
+    'vocational training fees Ghana',
     'professional development Ghana cost',
     'Hedge Resource Centre pricing',
   ],

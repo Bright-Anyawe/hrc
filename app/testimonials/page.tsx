@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     'consulting case studies Ghana',
     'HRC client feedback',
     'Hedge Resource Centre results',
+    'TVET Ghana',
+    'TVET training results Ghana',
+    'vocational training testimonials',
   ],
   alternates: { canonical: '/testimonials' },
   openGraph: {

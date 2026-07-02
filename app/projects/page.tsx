@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'HRC Ghana portfolio',
     'HRC past projects',
     'HRC successful projects Ghana',
+    'TVET project Ghana',
+    'TVET skills development project',
+    'vocational training project Ghana',
   ],
   alternates: { canonical: '/projects' },
   openGraph: {
