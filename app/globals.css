@@ -184,3 +184,74 @@
 .gradient-overlay {
   background: linear-gradient(135deg, rgba(237, 28, 36, 0.88) 0%, rgba(0, 35, 102, 0.92) 100%);
 }
+
+/* ─── Consulting Methodology Wheel ─── */
+.wheel-rotate-in {
+  animation: wheelRotateIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes wheelRotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.wheel-segment-pulse {
+  animation: segmentPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes segmentPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.wheel-segment-active {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 28px 8px rgba(0, 0, 0, 0.18) !important;
+  animation: none !important;
+  z-index: 10;
+}
+
+.detail-panel-enter {
+  animation: detailFadeIn 0.25s ease-out forwards;
+}
+
+@keyframes detailFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.decision-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.methodology-center-text {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Orbital node ring connector */
+.orbital-ring {
+  border: 2px dashed rgba(0, 35, 102, 0.1);
+}
+
+/* Smooth hover transitions for detail panel */
+.detail-content-transition {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}

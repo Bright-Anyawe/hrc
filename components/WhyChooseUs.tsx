@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Check, Award, Clock, Lightbulb, Heart, Star } from 'lucide-react';
+import ConsultingMethodology from './ConsultingMethodology';
 
 const WhyChooseUs = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -73,6 +74,24 @@ const WhyChooseUs = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Consulting Methodology Header */}
+        <div className={`text-center mb-10 sm:mb-14 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="block w-8 h-px bg-hrc-red"></span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Our Process</span>
+            <span className="block w-8 h-px bg-hrc-red"></span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-hrc-blue mb-3 sm:mb-4">
+            Consulting Methodology
+          </h2>
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
+            A proven, structured approach that delivers measurable results at every stage
+          </p>
+        </div>
+
+        {/* Consulting Methodology Wheel */}
+        <ConsultingMethodology />
+
         {/* Section Header */}
         <div className={`text-center mb-10 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="flex items-center justify-center gap-3 mb-3">
