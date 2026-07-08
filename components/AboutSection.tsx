@@ -84,7 +84,7 @@ const AboutSection = () => {
                 <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-t-4 border-hrc-blue">
                   <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-2 sm:mb-3">Our Vision</h3>
                   <p className="text-sm sm:text-base text-gray-600">
-                    To be Africa&apos;s leading resource development and consulting firm. In our mission to go global, we want to be the first location for a skate park and recreational centre.
+                    To be Africa&apos;s leading resource development and consulting firm. In our mission to go global, we want to be the first location for strategy and sustainable outcomes.
                   </p>
                 </div>
               </div>
