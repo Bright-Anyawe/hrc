@@ -135,7 +135,7 @@ export default function LeadMagnetGate({
                 if (status === 'error') setStatus('idle');
               }}
               placeholder="Enter your full name"
-              className="w-full px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-xl text-black placeholder-gray-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red focus:border-transparent transition-all duration-200"
               disabled={status === 'loading'}
             />
           </div>
@@ -154,7 +154,7 @@ export default function LeadMagnetGate({
                 if (status === 'error') setStatus('idle');
               }}
               placeholder="you@example.com"
-              className="w-full px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-2.5 sm:py-3 bg-white/10 border border-white/20 rounded-xl text-black placeholder-gray-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-hrc-red focus:border-transparent transition-all duration-200"
               disabled={status === 'loading'}
             />
           </div>

@@ -13,13 +13,14 @@ export const SITE = {
   phoneDisplayAlt: '0591481815',
   foundingYear: 2004,
   address: {
-    locality: 'Ashiaman',
+    streetAddress: 'Inside the Peretech Business Center, Redemption Street, Community 9',
+    locality: 'Tema',
     country: 'GH',
     region: 'Greater Accra',
   },
   geo: {
-    latitude: 5.6995,
-    longitude: -0.0360,
+    latitude: 5.6333,
+    longitude: -0.0166,
   },
 } as const;
 

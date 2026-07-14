@@ -130,23 +130,23 @@ const Header = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/">
-                <div className="flex items-center space-x-3 cursor-pointer">
-                  <Logo className="w-10 h-10 md:w-12 md:h-12" isScrolled={isScrolled} />
-                  <div className="hidden sm:block">
+                <div className="flex items-center gap-3 cursor-pointer">
+                  <Logo className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0" isScrolled={isScrolled} />
+                  <div className="hidden sm:flex sm:flex-col sm:justify-center sm:leading-none">
                     <span
-                      className={`text-base md:text-lg font-bold tracking-wide transition-colors duration-300 ${
+                      className={`block whitespace-nowrap text-sm md:text-base lg:text-lg font-bold leading-tight tracking-wide transition-colors duration-300 ${
                         isScrolled ? 'text-hrc-blue' : 'text-white'
                       }`}
                     >
                       HEDGE RESOURCE CENTRE
                     </span>
-                    <p
-                      className={`text-xs tracking-widest uppercase transition-colors duration-300 ${
+                    <span
+                      className={`block whitespace-nowrap text-[10px] md:text-xs leading-tight tracking-widest uppercase mt-1 transition-colors duration-300 ${
                         isScrolled ? 'text-hrc-red' : 'text-gray-300'
                       }`}
                     >
                       Leader in resource consulting
-                    </p>
+                    </span>
                   </div>
                 </div>
               </Link>

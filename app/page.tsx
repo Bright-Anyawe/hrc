@@ -79,7 +79,7 @@ const faqSchema = {
       name: 'Where is HRC Ghana located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'HRC Ghana is located in Ashiaman, Greater Accra, Ghana. You can reach us at 0302907115 or 0591481815, or email info@hrcghana.com.',
+        text:         'HRC Ghana is located inside the Peretech Business Center, Redemption Street, Community 9, Tema, Ghana. You can reach us at 0302907115 or 0591481815, or email info@hrcghana.com.',
       },
     },
     {

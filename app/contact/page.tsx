@@ -8,12 +8,12 @@ const siteUrl = 'https://www.hrcghana.com';
 export const metadata: Metadata = {
   title: 'Contact HRC Ghana | Hedge Resource Centre — Call 0302907115',
   description:
-    'Contact HRC Ghana (Hedge Resource Centre) today. Call 0302907115 or 0591481815, email info@hrcghana.com. Office in Accra, Ghana serving individuals, businesses & communities. Open Mon-Fri 8AM-6PM, Sat 9AM-4PM.',
+    'Contact HRC Ghana (Hedge Resource Centre) today. Call 0302907115 or 0591481815, email info@hrcghana.com. Office in Tema, Ghana serving individuals, businesses & communities. Open Mon-Fri 8AM-6PM, Sat 9AM-4PM.',
   keywords: [
     'contact HRC Ghana',
     'HRC Ghana phone number',
     'Hedge Resource Centre contact',
-    'HRC Accra address',
+    'HRC Tema address',
     'resource consulting contact Ghana',
     'info@hrcghana.com',
     '0302907115',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'consult HRC Ghana',
     'HRC business hours',
     'HRC Ghana email',
-    'Hedge Resource Centre Accra location',
+    'Hedge Resource Centre Tema location',
     'HRC customer service Ghana',
     'TVET training contact Ghana',
     'contact TVET provider Ghana',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Hedge Resource Centre | HRC Ghana',
     description:
-      'Get in touch with HRC Ghana. Call 0302907115 or email info@hrcghana.com. We\'re based in Accra and ready to help you achieve your professional and business goals.',
+      'Get in touch with HRC Ghana. Call 0302907115 or email info@hrcghana.com. We\'re based in Tema and ready to help you achieve your professional and business goals.',
     url: `${siteUrl}/contact`,
   },
 };

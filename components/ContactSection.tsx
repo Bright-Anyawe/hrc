@@ -106,7 +106,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: 'Location',
-      details: ['Ashiaman, Greater Accra'],
+      details: ['Inside Peretech Business Center, Redemption Street, Community 9', 'Tema, Greater Accra'],
       color: 'bg-red-100 text-hrc-red'
     }
   ];
@@ -183,24 +183,24 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Google Map — marker at Ashiaman */}
+            {/* Google Map — marker at Tema */}
             <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
               <h4 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4">Find Us</h4>
               <div className="w-full h-48 sm:h-64 rounded-lg overflow-hidden shadow-inner">
                 <iframe
-                  src="https://www.google.com/maps?q=5.6833,-0.0333&output=embed&z=15&marker=1"
+                  src="https://www.google.com/maps?q=5.6333,-0.0166&output=embed&z=15&marker=1"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 'inherit' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Hedge Resource Centre location in Ashiaman, Ghana"
+                  title="Hedge Resource Centre location in Tema, Ghana"
                   className="w-full h-full"
                 />
               </div>
               <p className="text-xs sm:text-sm text-gray-500 mt-3 text-center">
-                Ashiaman, Greater Accra Region, Ghana
+                Tema, Greater Accra Region, Ghana
               </p>
             </div>
           </div>

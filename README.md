@@ -1,6 +1,6 @@
 # Hedge Resource Centre (HRC) Ghana
 
-> Corporate website for Hedge Resource Centre — a leader in resource consulting, professional training, skills development, and advisory services in Accra, Ghana since 2004.
+> Corporate website for Hedge Resource Centre — a leader in resource consulting, professional training, skills development, and advisory services in Tema, Ghana since 2004.
 
 **Live site:** [https://www.hrcghana.com](https://www.hrcghana.com)
 

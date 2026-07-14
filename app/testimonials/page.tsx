@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Testimonials & Case Studies | HRC Ghana',
     description:
-      'Real results from real clients. Discover how Hedge Resource Centre has helped businesses, communities, and individuals across Ghana achieve measurable success.',
+      'See the kind of outcomes Hedge Resource Centre engagements are designed to deliver for businesses, communities, and individuals across Ghana.',
     url: `${siteUrl}/testimonials`,
   },
 };
@@ -43,63 +43,18 @@ const breadcrumbSchema = {
   ],
 };
 
-const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': `${siteUrl}/#organization`,
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '150',
-    bestRating: '5',
-    ratingCount: '150',
-    itemReviewed: {
-      '@type': 'Organization',
-      name: 'Hedge Resource Centre',
-    },
-  },
-  review: [
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Satisfied Client',
-      },
-      reviewBody: 'Hedge Resource Centre has been instrumental in transforming our business operations. Their expertise, professionalism, and commitment to excellence are unmatched.',
-    },
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Corporate Client',
-      },
-      reviewBody: 'HRC Ghana provided exceptional training services that significantly improved our team performance. Their TVET programmes are industry-leading.',
-    },
-    {
-      '@type': 'Review',
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Entrepreneur',
-      },
-      reviewBody: 'The business advisory services at HRC Ghana helped me launch my company successfully. Their guidance on business formation and strategy was invaluable.',
-    },
-  ],
-};
+// NOTE: A fabricated `Review`/`AggregateRating` schema block used to live here
+// (invented names like "Satisfied Client" / "Corporate Client" with a made-up
+// 4.8 rating from 150 reviews). It has been removed. Google treats review
+// structured data as a factual, verifiable claim — publishing invented
+// reviews violates Google's structured data guidelines and consumer
+// protection norms, and risks a manual action against the whole domain.
+//
+// To reinstate this safely: collect real reviews (Google Business Profile is
+// the simplest source), then either hardcode the real names/quotes/ratings
+// here, or better, fetch them live from the Google Business Profile API /
+// your review platform so the numbers can never go stale or drift from
+// reality.
 
 export default function TestimonialsPage() {
   return (
@@ -108,17 +63,25 @@ export default function TestimonialsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
       <AnimatedPage>
         <main className="min-h-screen">
           <PageHero
             title="Testimonials & Case Studies"
-            subtitle="Real results from real clients"
+            subtitle="What our engagements are designed to deliver"
             backgroundImage="https://images.pexels.com/photos/3184651/pexels-photo-3184651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           />
+          <div className="bg-amber-50 border-y border-amber-200">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
+              <p className="text-xs sm:text-sm text-amber-800">
+                The case studies below are illustrative examples of typical engagement outcomes, not
+                verified client quotes. Ask us for references from current clients at{' '}
+                <a href="tel:0302907115" className="font-semibold underline">
+                  0302907115
+                </a>
+                .
+              </p>
+            </div>
+          </div>
           <CaseStudiesSection />
         </main>
       </AnimatedPage>

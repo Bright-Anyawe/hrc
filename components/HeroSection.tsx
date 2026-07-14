@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, PlayCircle, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Counter from './Counter';
+import HeroBackground3D from './HeroBackground3D';
 import { trackEvent } from '@/lib/analytics';
 
 const HeroSection = () => {
@@ -52,7 +53,7 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Slideshow */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => (
           <div
             key={index}
@@ -68,6 +69,10 @@ const HeroSection = () => {
           </div>
         ))}
       </div>
+
+      {/* 3D parallax accent layer — purely decorative, sits above the photo,
+          below the text/CTAs */}
+      <HeroBackground3D />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">

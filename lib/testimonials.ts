@@ -1,6 +1,19 @@
 /**
  * Testimonials & Case Studies data for HRC Ghana.
- * Edit the content below to reflect real clients and projects.
+ *
+ * ⚠️ PLACEHOLDER DATA — confirmed not real. Every name, company, quote, and
+ * metric below (e.g. "34% productivity increase", "GHS 2.5M in funding") is
+ * illustrative sample content, not a real client engagement.
+ *
+ * Before this goes further:
+ *   1. Replace with real, permissioned client stories, or
+ *   2. Keep it generic/illustrative and label it clearly as such in the UI
+ *      (see the disclaimer banner on /testimonials), and never attach real
+ *      structured data (schema.org Review/AggregateRating) to invented names.
+ *
+ * Do not reuse these company/person names elsewhere on the site as if they
+ * were verified clients (e.g. a "client logo wall") until they're confirmed
+ * real and you have permission to use their name/logo.
  */
 
 export interface Testimonial {

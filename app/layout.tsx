@@ -99,6 +99,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
+  },
   openGraph: {
     title: 'Hedge Resource Centre (HRC) | Leader in Resource Consulting Ghana',
     description:
@@ -140,8 +148,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Set NEXT_PUBLIC_GOOGLE_VERIFICATION in .env.local with your site verification code
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || 'add-your-google-search-console-verification-code-here',
+    // Set NEXT_PUBLIC_GOOGLE_VERIFICATION in .env.local with your site verification code.
+    // Falls back to undefined (tag omitted) rather than a placeholder — an invalid
+    // token is worse than no tag, and Search Console reads it as a failed verification.
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || undefined,
   },
   referrer: 'origin-when-cross-origin',
   applicationName: 'Hedge Resource Centre Ghana',
@@ -172,6 +182,9 @@ import BackToTop from '@/components/BackToTop';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import BookNowButton from '@/components/BookNowButton';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import MarketingPixels from '@/components/MarketingPixels';
+import CookieConsent from '@/components/CookieConsent';
+import LeadMagnetModal from '@/components/LeadMagnetModal';
 import { SAME_AS_URLS } from '@/lib/constants';
 
 const organizationSchema = {
@@ -183,29 +196,29 @@ const organizationSchema = {
   url: siteUrl,
   logo: {
     '@type': 'ImageObject',
-    url: `${siteUrl}/HRC-logo.png`,
-    width: 200,
-    height: 200,
+    url: `${siteUrl}/HRC-icon.png`,
+    width: 512,
+    height: 512,
   },
-  image: `${siteUrl}/HRC-logo.png`,
+  image: `${siteUrl}/HRC-icon.png`,
   description:
     'Hedge Resource Centre (HRC) is Ghana\'s leading resource consulting firm, providing professional training, TVET skills development, business advisory, research, assessment, and recruitment services since 2004. Trusted by 1000+ clients across Ghana.',
   foundingDate: '2004',
   foundingLocation: {
     '@type': 'Place',
-    name: 'Ashiaman, Greater Accra, Ghana',
+    name: 'Tema, Greater Accra, Ghana',
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Ashiaman',
-    addressLocality: 'Ashiaman',
+    streetAddress: 'Inside the Peretech Business Center, Redemption Street, Community 9',
+    addressLocality: 'Tema',
     addressRegion: 'Greater Accra',
     addressCountry: 'GH',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 5.6995,
-    longitude: -0.0360,
+    latitude: 5.6333,
+    longitude: -0.0166,
   },
   areaServed: [
     {
@@ -218,7 +231,7 @@ const organizationSchema = {
     },
     {
       '@type': 'City',
-      name: 'Ashiaman',
+      name: 'Tema',
     },
   ],
   knowsAbout: [
@@ -275,13 +288,15 @@ const organizationSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Advisory Services' } },
     ],
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '150',
-    bestRating: '5',
-    ratingCount: '150',
-  },
+  // NOTE: `aggregateRating` was intentionally removed. It previously contained
+  // fabricated numbers (4.8 / 150 reviews) with no real reviews behind them.
+  // Structured data is machine-checked by Google — publishing invented ratings
+  // is a policy violation (and a consumer-protection risk) that can trigger a
+  // manual action against the whole site. Once you have real, verifiable
+  // reviews (Google Business Profile, Trustpilot, etc.), re-add this block
+  // with the real ratingValue/reviewCount and a `review` array of real
+  // reviews, or better: pull it dynamically from your review platform's API
+  // so it can never drift out of sync with reality.
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -337,8 +352,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.pexels.com" />
-        <link rel="icon" href="/HRC-logo.png" type="image/png" />
-        <link rel="alternate icon" href="/HRC-logo.png" type="image/png" />
+        {/* Favicons are generated automatically by Next.js from app/favicon.ico
+            and app/icon.png (both square, as Google requires for the search
+            result logo). Do NOT re-add manual <link rel="icon"> tags pointing at
+            the non-square /HRC-logo.png here — that is what stopped the logo from
+            showing next to the search listing. */}
         <meta name="theme-color" content="#002366" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,9 +374,12 @@ export default function RootLayout({
         <div id="main-content">{children}</div>
         <Footer />
         <GoogleAnalytics />
+        <MarketingPixels />
         <BackToTop />
         <WhatsAppButton />
         <BookNowButton />
+        <LeadMagnetModal />
+        <CookieConsent />
       </body>
     </html>
   );

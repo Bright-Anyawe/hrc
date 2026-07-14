@@ -166,7 +166,7 @@ Disallow: /admin/
 
 **Local Citations (NAP Consistency):**
 - Name: Hedge Resource Centre
-- Address: Ashiaman, Greater Accra, Ghana
+- Address: Inside the Peretech Business Center, Redemption Street, Community 9, Tema, Ghana
 - Phone: +233-302-907-115
 
 **Citation Sources:**
@@ -186,13 +186,12 @@ Disallow: /admin/
 {
   "@type": "LocalBusiness",
   "areaServed": [
-    {"@type": "City", "name": "Ashiaman"},
     {"@type": "City", "name": "Tema"},
     {"@type": "City", "name": "Accra"},
     {"@type": "State", "name": "Greater Accra"},
     {"@type": "Country", "name": "Ghana"}
   ],
-  "hasMap": "https://maps.google.com/?q=Hedge+Resource+Centre+Ashiaman",
+  "hasMap": "https://maps.google.com/?q=Hedge+Resource+Centre+Tema",
   "priceRange": "$$"
 }
 ```
@@ -415,7 +414,7 @@ Question and answer format that AI can extract.
 - "Hedge Resource Centre has served 1000+ clients since 2004"
 - "HRC Ghana maintains a 98% client satisfaction rate"
 - "HRC offers 6 core services across 25+ specializations"
-- "Founded in 2004 in Ashiaman, Greater Accra, Ghana"
+- "Founded in 2004 in Tema, Greater Accra, Ghana"
 
 ### 2.6 AI Search Monitoring
 
@@ -1672,7 +1671,7 @@ Question and answer format that AI can extract.
 **Profile Completion Checklist:**
 - [x] Business name: Hedge Resource Centre
 - [x] Category: Training Centre, Business Consultant
-- [x] Address: Ashiaman, Greater Accra
+- [x] Address: Inside the Peretech Business Center, Redemption Street, Community 9, Tema, Greater Accra
 - [x] Phone: +233-302-907-115
 - [x] Website: www.hrcghana.com
 - [ ] Hours: Mon-Fri 8am-6pm, Sat 9am-4pm
@@ -2864,7 +2863,7 @@ The HRC Team
 [Additional context and background]
 
 **About Hedge Resource Centre:**
-Hedge Resource Centre (HRC Ghana) is a leading resource consulting firm founded in 2004. Based in Ashiaman, Greater Accra, HRC provides training, skills development, research, assessment, and advisory services to over 1000 clients across Ghana. Learn more at www.hrcghana.com.
+Hedge Resource Centre (HRC Ghana) is a leading resource consulting firm founded in 2004. Based in Tema, Greater Accra, HRC provides training, skills development, research, assessment, and advisory services to over 1000 clients across Ghana. Learn more at www.hrcghana.com.
 
 **Media Contact:**
 [Name]

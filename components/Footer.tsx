@@ -46,7 +46,7 @@ function NewsletterForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex items-center gap-1.5 text-green-300 text-[10px] font-medium">
+      <div className="flex items-center gap-1.5 text-green-300 text-[12px] font-medium">
         <CheckCircle size={14} />
         <span>Subscribed!</span>
       </div>
@@ -65,13 +65,13 @@ function NewsletterForm() {
           onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle'); }}
           placeholder="Enter your email"
           autoComplete="email"
-          className="px-2 py-1 bg-white text-gray-800 rounded-l flex-grow md:w-44 text-[10px] focus:outline-none focus:ring-1 focus:ring-hrc-red"
+          className="px-2 py-1 bg-white text-gray-800 rounded-l flex-grow md:w-44 text-[12px] focus:outline-none focus:ring-1 focus:ring-hrc-red"
           disabled={status === 'loading'}
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="bg-hrc-red hover:bg-red-700 px-2 sm:px-3 py-1 rounded-r text-[10px] font-semibold transition-colors duration-300 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-1"
+          className="bg-hrc-red hover:bg-red-700 px-2 sm:px-3 py-1 rounded-r text-[12px] font-semibold transition-colors duration-300 whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-1"
         >
           {status === 'loading' ? (
             <>
@@ -84,7 +84,7 @@ function NewsletterForm() {
         </button>
       </div>
       {errorMsg && (
-        <p className="mt-0.5 text-red-300 text-[9px]">{errorMsg}</p>
+        <p className="mt-0.5 text-red-300 text-[10.8px]">{errorMsg}</p>
       )}
     </form>
   );
@@ -127,14 +127,14 @@ const Footer = () => {
           <div className="col-span-2 sm:col-span-1">
             <div className="flex items-center space-x-1.5 mb-1.5">
               <div className="w-6 h-6 bg-hrc-red flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-[10px] tracking-widest">H</span>
+                <span className="text-white font-bold text-[12px] tracking-widest">H</span>
               </div>
               <div className="min-w-0">
-                <h3 className="text-[11px] font-bold leading-tight tracking-wide">HRC GHANA</h3>
-                <p className="text-[8px] tracking-widest uppercase text-hrc-red">Leader in resource consulting</p>
+                <h3 className="text-[13.2px] font-bold leading-tight tracking-wide">HRC GHANA</h3>
+                <p className="text-[9.6px] tracking-widest uppercase text-hrc-red">Leader in resource consulting</p>
               </div>
             </div>
-            <p className="text-[10px] text-gray-300 mb-1.5 leading-snug">
+            <p className="text-[12px] text-gray-300 mb-1.5 leading-snug">
               Since 2004 — Quality Education, Poverty Reduction, Sustainable Communities.
             </p>
             <div className="flex space-x-1.5">
@@ -155,12 +155,12 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Services</h4>
+            <h4 className="text-[10.8px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Services</h4>
             <div className="w-4 h-px bg-hrc-red mb-1"></div>
             <ul className="space-y-0.5">
               {services.map((service) => (
                 <li key={service.name}>
-                  <Link href={service.href} className="text-[10px] text-gray-300 hover:text-white transition-colors duration-300">
+                  <Link href={service.href} className="text-[12px] text-gray-300 hover:text-white transition-colors duration-300">
                     {service.name}
                   </Link>
                 </li>
@@ -170,12 +170,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Links</h4>
+            <h4 className="text-[10.8px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Links</h4>
             <div className="w-4 h-px bg-hrc-red mb-1"></div>
             <ul className="space-y-0.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[10px] text-gray-300 hover:text-white transition-colors duration-300">
+                  <Link href={link.href} className="text-[12px] text-gray-300 hover:text-white transition-colors duration-300">
                     {link.name}
                   </Link>
                 </li>
@@ -185,24 +185,24 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Contact</h4>
+            <h4 className="text-[10.8px] font-semibold tracking-widest uppercase text-gray-400 mb-0.5">Contact</h4>
             <div className="w-4 h-px bg-hrc-red mb-1"></div>
             <div className="space-y-1">
               <div className="flex items-center space-x-1.5">
                 <Phone className="w-3 h-3 text-hrc-red flex-shrink-0" />
-                <p className="text-[10px] text-gray-300">0302907115</p>
+                <p className="text-[12px] text-gray-300">0302907115</p>
               </div>
               <div className="flex items-center space-x-1.5">
                 <Phone className="w-3 h-3 text-hrc-red flex-shrink-0" />
-                <p className="text-[10px] text-gray-300">0591481815</p>
+                <p className="text-[12px] text-gray-300">0591481815</p>
               </div>
               <div className="flex items-center space-x-1.5">
                 <Mail className="w-3 h-3 text-hrc-red flex-shrink-0" />
-                <p className="text-[10px] text-gray-300">info@hrcghana.com</p>
+                <p className="text-[12px] text-gray-300">info@hrcghana.com</p>
               </div>
               <div className="flex items-center space-x-1.5">
                 <MapPin className="w-3 h-3 text-hrc-red flex-shrink-0" />
-                <p className="text-[10px] text-gray-300">Ashiaman, Accra</p>
+                <p className="text-[12px] text-gray-300">Tema, Greater Accra</p>
               </div>
             </div>
           </div>
@@ -214,14 +214,18 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
             <div className="flex items-center gap-3">
-              <p className="text-gray-300 text-[9px]">
+              <p className="text-gray-300 text-[10.8px]">
                 © {currentYear} Hedge Resource Centre. All rights reserved.
               </p>
-              <span className="text-gray-500 text-[9px]">|</span>
-              <span className="text-gray-400 text-[9px]">hrcghana.com</span>
+              <span className="text-gray-500 text-[10.8px]">|</span>
+              <span className="text-gray-400 text-[10.8px]">hrcghana.com</span>
+              <span className="text-gray-500 text-[10.8px]">|</span>
+              <Link href="/privacy" className="text-gray-400 text-[10.8px] hover:text-white transition-colors duration-300">
+                Privacy Policy
+              </Link>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[9px] text-gray-400">Newsletter:</span>
+              <span className="text-[10.8px] text-gray-400">Newsletter:</span>
               <NewsletterForm />
             </div>
           </div>

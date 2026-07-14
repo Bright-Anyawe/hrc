@@ -211,7 +211,7 @@ const WhyChooseUs = () => {
               "Hedge Resource Centre has been instrumental in transforming our business operations. Their expertise, professionalism, and commitment to excellence are unmatched."
             </blockquote>
             <div className="text-hrc-blue font-semibold text-sm sm:text-base">
-              — Satisfied Client
+              — Illustrative client feedback
             </div>
           </div>
         </div>

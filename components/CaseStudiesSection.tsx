@@ -59,7 +59,7 @@ const CaseStudiesSection = () => {
             Detailed Case Studies
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
-            Explore how we&apos;ve delivered measurable results for our clients — from challenge to solution to impact
+            Illustrative examples of how an HRC engagement typically moves from challenge to solution to impact
           </p>
         </div>
 

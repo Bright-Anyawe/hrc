@@ -255,3 +255,97 @@
 .detail-content-transition {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
+/* --- Hero 3D background (see components/HeroBackground3D.tsx) --- */
+.hero-3d-scene {
+  --tilt-x: 0;
+  --tilt-y: 0;
+}
+
+.hero-3d-rig {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--tilt-x, 0) * 1deg)) rotateY(calc(var(--tilt-y, 0) * 1deg));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-3d-shape {
+  position: absolute;
+  will-change: transform;
+  background: linear-gradient(135deg, rgba(237, 28, 36, 0.28), rgba(0, 35, 102, 0.22));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(2px);
+}
+
+.hero-3d-shape--hex {
+  top: 14%;
+  left: 8%;
+  width: clamp(90px, 10vw, 160px);
+  height: clamp(90px, 10vw, 160px);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  transform: translateZ(60px);
+  animation: hero3dFloat 7s ease-in-out infinite;
+}
+
+.hero-3d-shape--circle {
+  top: 62%;
+  left: 18%;
+  width: clamp(50px, 6vw, 90px);
+  height: clamp(50px, 6vw, 90px);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(253, 224, 71, 0.35), rgba(237, 28, 36, 0.2));
+  transform: translateZ(120px);
+  animation: hero3dFloat 9s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.hero-3d-shape--diamond {
+  top: 22%;
+  right: 12%;
+  width: clamp(70px, 8vw, 120px);
+  height: clamp(70px, 8vw, 120px);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: translateZ(40px);
+  animation: hero3dFloat 8s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.hero-3d-shape--ring {
+  bottom: 12%;
+  right: 20%;
+  width: clamp(110px, 12vw, 200px);
+  height: clamp(110px, 12vw, 200px);
+  background: transparent;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 9999px;
+  transform: translateZ(90px) rotate(12deg);
+  animation: hero3dSpin 26s linear infinite;
+}
+
+@keyframes hero3dFloat {
+  0%, 100% { transform: translateZ(var(--depth, 60px)) translateY(0); }
+  50% { transform: translateZ(var(--depth, 60px)) translateY(-16px); }
+}
+
+@keyframes hero3dSpin {
+  from { transform: translateZ(90px) rotate(0deg); }
+  to   { transform: translateZ(90px) rotate(360deg); }
+}
+
+/* --- Reduced motion: respect the OS-level preference everywhere --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-3d-rig {
+    transform: none !important;
+}
+}
