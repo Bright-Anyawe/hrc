@@ -11,7 +11,7 @@ const SITE_URL = 'https://www.hrcghana.com';
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const staticRoutes: MetadataRoute.Sitemap = [
+  const staticRoutes = [
     { url: `${SITE_URL}/`, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE_URL}/about`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/services`, changeFrequency: 'weekly', priority: 0.9 },
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     { url: `${SITE_URL}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
-  ].map((route) => ({ ...route, lastModified: now }));
+  ].map((route) => ({ ...route, lastModified: now })) as MetadataRoute.Sitemap;
 
   const postRoutes: MetadataRoute.Sitemap = getAllPostsMeta().map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
