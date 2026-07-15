@@ -9,8 +9,8 @@ const siteUrl = 'https://www.hrcghana.com';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Hedge Resource Centre (HRC) | Leader in Resource Consulting Ghana',
-    template: '%s | Hedge Resource Centre Ghana',
+    default: 'HRC Ghana | Hedge Resource Centre — Leader in Resource Consulting Ghana',
+    template: '%s | HRC Ghana',
   },
   description:
     'What is HRC Ghana? Hedge Resource Centre is Ghana\'s #1 resource consulting firm since 2004. We offer professional training, TVET skills development, business advisory, research, assessment, recruitment, and CPD programmes in Accra. Trusted by 1000+ clients. Call 0302907115.',
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Hedge Resource Centre (HRC) | Leader in Resource Consulting Ghana',
+    title: 'HRC Ghana | Hedge Resource Centre — Leader in Resource Consulting Ghana',
     description:
       'HRC Ghana provides expert resource consulting, professional training, skills development, research, assessment, and advisory services. Over 15 years serving individuals, businesses, and communities across Ghana.',
     url: siteUrl,
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@hrcghana',
     creator: '@hrcghana',
-    title: 'Hedge Resource Centre (HRC) | Resource Consulting Ghana',
+    title: 'HRC Ghana | Hedge Resource Centre — Resource Consulting Ghana',
     description:
       'Expert resource consulting, professional training & skills development in Ghana since 2004. Trusted by 1000+ clients. Call 0302907115.',
     images: ['/og-image.png'],
