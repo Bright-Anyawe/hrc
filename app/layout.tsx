@@ -101,7 +101,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
+      // favicon.ico lives in public/ (not app/) on purpose: the app/favicon.ico
+      // convention makes Next.js emit sizes="16x16" regardless of the file's real
+      // 48x48 dimensions, which tells Google the icon is below its recommended
+      // minimum for the search-result logo.
+      { url: '/favicon.ico', sizes: '48x48' },
       { url: '/icon.png', type: 'image/png', sizes: '512x512' },
     ],
     shortcut: '/favicon.ico',
@@ -352,11 +356,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.pexels.com" />
-        {/* Favicons are generated automatically by Next.js from app/favicon.ico
-            and app/icon.png (both square, as Google requires for the search
-            result logo). Do NOT re-add manual <link rel="icon"> tags pointing at
-            the non-square /HRC-logo.png here — that is what stopped the logo from
-            showing next to the search listing. */}
+        {/* Favicon links come from app/icon.png (file convention, 512x512) plus
+            the metadata.icons config above (public/favicon.ico, 48x48 — both
+            square, as Google requires for the search result logo). Do NOT re-add
+            manual <link rel="icon"> tags pointing at the non-square
+            /HRC-logo.png here — that is what stopped the logo from showing next
+            to the search listing. */}
         <meta name="theme-color" content="#002366" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

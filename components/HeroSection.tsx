@@ -15,9 +15,9 @@ const HeroSection = () => {
 
   const slides = [
     {
-      title: "LET'S MAKE YOUR IDEAS GROW",
-      subtitle: "Leader in resource consulting",
-      description: "Empowering businesses and individuals through comprehensive training, skills development, and strategic consulting services.",
+      title: 'HRC GHANA',
+      subtitle: 'Hedge Resource Centre — Leader in Resource Consulting',
+      description: 'HRC Ghana (Hedge Resource Centre) empowers businesses and individuals through comprehensive training, skills development, and strategic consulting services.',
       image: "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
     {
@@ -84,7 +84,7 @@ const HeroSection = () => {
               <div className="flex items-center gap-3">
                 <span className="block w-8 h-px bg-hrc-red flex-shrink-0"></span>
                 <span className="text-xs font-semibold tracking-widest uppercase text-gray-300">
-                  Hedge Resource Centre
+                  HRC Ghana | Hedge Resource Centre
                 </span>
               </div>
               <h1 className="speakable text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">

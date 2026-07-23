@@ -66,7 +66,7 @@ const AboutSection = () => {
               <div className="w-16 h-1 bg-hrc-red mb-6 sm:mb-8"></div>
 
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-                Since <span className="font-bold text-hrc-red">2004</span>, we have been executing our services and projects to achieve outcomes such as Quality Education, Poverty Reduction, Hunger Eradication, Industry and Innovation, Economic Empowerment, and Sustainable Communities.
+                Since <span className="font-bold text-hrc-red">2004</span>, HRC Ghana (Hedge Resource Centre) has been executing services and projects to achieve outcomes such as Quality Education, Poverty Reduction, Hunger Eradication, Industry and Innovation, Economic Empowerment, and Sustainable Communities.
               </p>
 
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6 sm:mb-8">
