@@ -1,31 +1,40 @@
 /**
  * Testimonials & Case Studies data for HRC Ghana.
  *
- * ⚠️ PLACEHOLDER DATA — confirmed not real. Every name, company, quote, and
- * metric below (e.g. "34% productivity increase", "GHS 2.5M in funding") is
- * illustrative sample content, not a real client engagement.
+ * ⚠️ MIXED DATA — check the `verified` flag on every entry.
  *
- * Before this goes further:
- *   1. Replace with real, permissioned client stories, or
- *   2. Keep it generic/illustrative and label it clearly as such in the UI
- *      (see the disclaimer banner on /testimonials), and never attach real
- *      structured data (schema.org Review/AggregateRating) to invented names.
+ *   verified: true  → a real, named client who gave this feedback directly.
+ *                     Safe to attribute publicly. Only these entries may ever
+ *                     back schema.org Review structured data.
  *
- * Do not reuse these company/person names elsewhere on the site as if they
- * were verified clients (e.g. a "client logo wall") until they're confirmed
- * real and you have permission to use their name/logo.
+ *   verified: false → PLACEHOLDER. Illustrative sample content, not a real
+ *                     engagement. Every name, company, quote, and metric
+ *                     (e.g. "34% productivity increase", "GHS 2.5M in
+ *                     funding") is invented.
+ *
+ * All `caseStudies` below are still placeholders — the /testimonials page
+ * carries a disclaimer banner saying so.
+ *
+ * Do not reuse placeholder company/person names elsewhere on the site as if
+ * they were real clients (e.g. a "client logo wall"), and never attach
+ * schema.org Review/AggregateRating to an unverified entry — Google treats
+ * review markup as a factual claim.
  */
 
 export interface Testimonial {
   id: string;
   name: string;
   role: string;
-  company: string;
+  /** Omitted when the client gave feedback as an individual, not on behalf of an organisation. */
+  company?: string;
   avatar?: string; // initials used as fallback
   initials: string;
   rating: number; // 1–5
+  /** Paragraphs separated by a blank line (`\n\n`) are rendered as separate <p> elements. */
   quote: string;
   service: string;
+  /** True only for real, permissioned client feedback. See the file header. */
+  verified?: boolean;
 }
 
 export interface CaseStudy {
@@ -47,12 +56,27 @@ export interface CaseStudy {
 
 export const testimonials: Testimonial[] = [
   {
+    id: 't-edward-afoh',
+    name: 'Edward Afoh',
+    role: 'Teacher',
+    initials: 'EA',
+    rating: 5,
+    verified: true,
+    quote:
+      "Hedge Resource Centre really enlightened me on my teaching profession. Before I enrolled at the Hedge Resource Centre, I wasn't good at lesson preparation. It was through their training that I learnt how to prepare lessons very effectively. One challenge I was facing then was my class control and management. In fact it wasn't easy for me, but upon the completion of the training it became so easy for me to handle any class with ease.\n\n" +
+      'The results from the training have been marvelous. It gave me high profile recognition in the school I was teaching then. I was able to organize in-service training for my colleagues on lesson planning and classroom management.\n\n' +
+      'Lastly, the most important one, was the increase in salary. My salary went up — in fact I was really surprised, but that is the difference the training can make. Getting more than 60% increase in salary was amazing.\n\n' +
+      'All thanks to the Hedge Resource Centre. God bless the originator.',
+    service: 'Training & Tutoring',
+  },
+  {
     id: 't1',
     name: 'Kwame Asante',
     role: 'Managing Director',
     company: 'Asante Holdings Ltd',
     initials: 'KA',
     rating: 5,
+    verified: false,
     quote:
       'Hedge Resource Centre transformed our staff training approach. Their tailored CPD programmes significantly improved our team\'s performance and productivity. Within six months, we saw a measurable increase in efficiency across departments.',
     service: 'Training & Tutoring',
@@ -64,6 +88,7 @@ export const testimonials: Testimonial[] = [
     company: 'Ghana Financial Services',
     initials: 'AO',
     rating: 5,
+    verified: false,
     quote:
       'The advisory team at HRC provided invaluable guidance during our restructuring. Their deep understanding of the Ghanaian business landscape combined with global best practices made all the difference. Highly recommended.',
     service: 'Advisory',
@@ -75,6 +100,7 @@ export const testimonials: Testimonial[] = [
     company: 'Community Skills Initiative',
     initials: 'ES',
     rating: 5,
+    verified: false,
     quote:
       'HRC\'s TVET skills development programme for our community youth was exceptional. Over 200 young people gained market-relevant technical skills, and 75% secured employment within three months of completion.',
     service: 'Skills Development',
@@ -86,6 +112,7 @@ export const testimonials: Testimonial[] = [
     company: 'Amponsah Ventures',
     initials: 'MA',
     rating: 4,
+    verified: false,
     quote:
       'From business formation to funding strategy, HRC guided us through every step. Their research and industry analysis gave us the confidence to enter new markets. A true partner in growth.',
     service: 'Research & Advisory',
@@ -97,6 +124,7 @@ export const testimonials: Testimonial[] = [
     company: 'Rural Development Trust',
     initials: 'ST',
     rating: 5,
+    verified: false,
     quote:
       'The community assessment conducted by HRC was thorough and insightful. Their recommendations directly shaped our intervention strategy and helped us allocate resources where they were needed most.',
     service: 'Assessment',
