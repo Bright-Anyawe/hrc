@@ -21,7 +21,12 @@ import type { SimplePublicObject } from '@hubspot/api-client/lib/codegen/crm/con
 
 /* ─── Types ─── */
 
-export type CrmSource = 'contact-form' | 'booking-details' | 'booking-confirmed' | 'lead-magnet';
+export type CrmSource =
+  | 'contact-form'
+  | 'booking-details'
+  | 'booking-confirmed'
+  | 'lead-magnet'
+  | 'newsletter';
 
 export interface CrmPayload {
   source: CrmSource;
@@ -49,6 +54,18 @@ function splitName(fullName: string): { firstName: string; lastName: string } {
   const m = FIRST_LAST_REGEX.exec(fullName.trim());
   if (!m) return { firstName: fullName, lastName: '' };
   return { firstName: m[1]!, lastName: m[2]?.trim() ?? '' };
+}
+
+const DEAL_NAME_BY_SOURCE: Record<CrmSource, (service: string | undefined) => string> = {
+  'contact-form': (service) => `Website Enquiry — ${service || 'General'}`,
+  'booking-details': (service) => `Booking Initiated — ${service || 'Consultation'}`,
+  'booking-confirmed': (service) => `Booking Confirmed — ${service || 'Consultation'}`,
+  'lead-magnet': (service) => `Lead Magnet Download — ${service || 'Resource'}`,
+  newsletter: () => 'Newsletter Signup',
+};
+
+function buildDealName(payload: CrmPayload): string {
+  return DEAL_NAME_BY_SOURCE[payload.source](payload.service);
 }
 
 function getClient(): Client | null {
@@ -125,14 +142,7 @@ export async function syncToCRM(payload: CrmPayload): Promise<CrmResult> {
     let dealId: string | undefined;
 
     try {
-      const dealName =
-        payload.source === 'contact-form'
-          ? `Website Enquiry — ${payload.service || 'General'}`
-          : payload.source === 'booking-details'
-            ? `Booking Initiated — ${payload.service || 'Consultation'}`
-            : payload.source === 'booking-confirmed'
-              ? `Booking Confirmed — ${payload.service || 'Consultation'}`
-              : `Lead Magnet Download — ${payload.service || 'Resource'}`;
+      const dealName = buildDealName(payload);
 
       const deal = await client.crm.deals.basicApi.create({
         properties: {

@@ -33,40 +33,49 @@ export default function LeadMagnetGate({
     setStatus('loading');
     setErrorMsg('');
 
+    const lead = { name: name.trim(), email: email.trim() };
+
     try {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email.trim(),
-          name: name.trim(),
-        }),
+        body: JSON.stringify(lead),
       });
 
-      if (res.ok) {
-        setStatus('success');
-        trackEvent('lead_magnet_download', { resource: resourceTitle });
-
-        // Fire-and-forget CRM sync — log but don't block the user
-        fetch('/api/crm/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            source: 'lead-magnet',
-            name: name.trim(),
-            email: email.trim(),
-            notes: `Downloaded: ${resourceTitle}`,
-          }),
-        }).catch((err) => console.warn('[LeadMagnetGate] CRM sync error:', err));
-      } else {
-        const data = await res.json();
-        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+      // Only bad input is worth blocking on — the user can fix that. A
+      // server-side capture failure is our problem, not theirs, so they still
+      // get the resource they came for.
+      if (res.status === 400) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data.error || 'Please check your details and try again.');
         setStatus('error');
+        return;
       }
-    } catch {
-      setErrorMsg('Network error. Please try again.');
+
+      if (!res.ok) {
+        console.warn('[LeadMagnetGate] Newsletter capture failed:', res.status);
+      }
+    } catch (err) {
+      // A hard network failure is worth retrying — the submission never landed.
+      console.warn('[LeadMagnetGate] Newsletter request error:', err);
+      setErrorMsg('Network error. Please check your connection and try again.');
       setStatus('error');
+      return;
     }
+
+    setStatus('success');
+    trackEvent('lead_magnet_download', { resource: resourceTitle });
+
+    // Fire-and-forget CRM sync — records which resource was taken.
+    fetch('/api/crm/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: 'lead-magnet',
+        ...lead,
+        notes: `Downloaded: ${resourceTitle}`,
+      }),
+    }).catch((err) => console.warn('[LeadMagnetGate] CRM sync error:', err));
   };
 
   // ── Success state: reveal the content ──
