@@ -24,7 +24,8 @@
 export interface Testimonial {
   id: string;
   name: string;
-  role: string;
+  /** Omitted when the client gave feedback without a stated title. */
+  role?: string;
   /** Omitted when the client gave feedback as an individual, not on behalf of an organisation. */
   company?: string;
   avatar?: string; // initials used as fallback
@@ -68,6 +69,39 @@ export const testimonials: Testimonial[] = [
       'Lastly, the most important one, was the increase in salary. My salary went up — in fact I was really surprised, but that is the difference the training can make. Getting more than 60% increase in salary was amazing.\n\n' +
       'All thanks to the Hedge Resource Centre. God bless the originator.',
     service: 'Training & Tutoring',
+  },
+  {
+    id: 't-melody-appietu',
+    name: 'Melody Enyonam Appietu (MPhil)',
+    role: 'Lecturer & Facilitator, Hospitality and Tourism Department',
+    company: 'Ho Technical University',
+    initials: 'MA',
+    rating: 5,
+    verified: true,
+    quote:
+      "The mentoring I received through the school-based INSET conducted by Hedge Resource Centre, under the leadership of Mr. Gershon Vorsah, transformed my professional journey. It inspired me to pursue teaching at a higher level, and today I serve as a Lecturer and Facilitator in the Hospitality and Tourism Department of Ho Technical University. The Centre's commitment to continuous professional development equipped me with learner-centered teaching approaches and strengthened my capacity as an educator.",
+    service: 'Training & Professional Development',
+  },
+  {
+    id: 't-sanity-electrical',
+    name: 'Sanity Electrical Engineering',
+    role: 'CEO',
+    initials: 'SE',
+    rating: 5,
+    verified: true,
+    quote:
+      'Hedge Resource Centre provided us with exceptional support in registering our business and ensuring full regulatory compliance. Their professionalism, efficiency, and expert guidance made the entire process seamless and stress-free. We are grateful for their outstanding service and highly recommend Hedge Resource Centre to any entrepreneur or business seeking reliable business registration and compliance support.',
+    service: 'Business Registration & Compliance',
+  },
+  {
+    id: 't-sq-gagbla',
+    name: 'Rev. S. Q. Gagbla',
+    initials: 'SG',
+    rating: 5,
+    verified: true,
+    quote:
+      "Hedge Resource Centre's CEO and Founder, Mr. Gershon Vorsah, is an exceptional resource consultant. He combines strategic insight with genuine empathy. He approaches every engagement with analytical rigor, asking the right questions to uncover practical and sustainable solutions. His professionalism, integrity, and ability to navigate complex challenges have earned him the trust of clients. Beyond delivering technical expertise, he empowers individuals and organizations to make informed decisions and achieve meaningful results.",
+    service: 'Advisory',
   },
   {
     id: 't1',

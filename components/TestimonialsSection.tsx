@@ -83,9 +83,11 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
           </div>
           <div>
             <div className="text-white font-semibold text-sm sm:text-base">{testimonial.name}</div>
-            <div className="text-gray-400 text-xs sm:text-sm">
-              {[testimonial.role, testimonial.company].filter(Boolean).join(', ')}
-            </div>
+            {(testimonial.role || testimonial.company) && (
+              <div className="text-gray-400 text-xs sm:text-sm">
+                {[testimonial.role, testimonial.company].filter(Boolean).join(', ')}
+              </div>
+            )}
             <div className="text-hrc-red text-xs mt-0.5 font-medium">{testimonial.service}</div>
           </div>
         </div>
