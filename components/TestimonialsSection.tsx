@@ -14,6 +14,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { testimonials, type Testimonial } from '@/lib/testimonials';
 import { cn } from '@/lib/utils';
 
+/** How long each testimonial stays on screen before auto-advancing. */
+const AUTOPLAY_INTERVAL_MS = 6000;
+
 const renderStars = (rating: number) =>
   Array.from({ length: 5 }, (_, i) => (
     <Star
@@ -101,6 +104,8 @@ const TestimonialsSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+  // Autoplay pauses while the visitor is reading (hover/focus) or the tab is hidden.
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,6 +133,28 @@ const TestimonialsSection = () => {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
+
+  // ── Autoplay ──
+  // Advances the carousel on an interval. Skipped entirely for visitors who
+  // prefer reduced motion, and paused while they're interacting or the tab is
+  // backgrounded so a card never slides away mid-read.
+  useEffect(() => {
+    if (!api || isPaused) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const id = setInterval(() => {
+      // Guard against advancing while the tab is hidden (interval timers still
+      // fire, just throttled) — resume seamlessly when the visitor returns.
+      if (document.hidden) return;
+      api.scrollNext();
+    }, AUTOPLAY_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [api, isPaused]);
 
   return (
     <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-hrc-blue relative overflow-hidden">
@@ -168,6 +195,10 @@ const TestimonialsSection = () => {
             isVisible ? 'animate-fade-in' : 'opacity-0'
           )}
           style={{ animationDelay: '200ms' }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
         >
           <Carousel
             setApi={setApi}
