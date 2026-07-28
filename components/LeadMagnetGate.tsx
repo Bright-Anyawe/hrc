@@ -25,6 +25,9 @@ export default function LeadMagnetGate({
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  // Set once the confirmation email is confirmed sent, so we never promise a
+  // message that didn't actually go out.
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,16 +69,23 @@ export default function LeadMagnetGate({
     setStatus('success');
     trackEvent('lead_magnet_download', { resource: resourceTitle });
 
-    // Fire-and-forget CRM sync — records which resource was taken.
-    fetch('/api/crm/sync', {
+    // Fire-and-forget: emails the visitor their resource confirmation, notifies
+    // the team, and syncs the lead to the CRM. Runs after the reveal so a slow
+    // or failed send never delays the content the visitor came for.
+    fetch('/api/lead-magnet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        source: 'lead-magnet',
         ...lead,
-        notes: `Downloaded: ${resourceTitle}`,
+        resource: resourceTitle,
+        resourceUrl: typeof window !== 'undefined' ? window.location.href : undefined,
       }),
-    }).catch((err) => console.warn('[LeadMagnetGate] CRM sync error:', err));
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.emailSent) setEmailSent(true);
+      })
+      .catch((err) => console.warn('[LeadMagnetGate] Lead-magnet email/CRM error:', err));
   };
 
   // ── Success state: reveal the content ──
@@ -89,6 +99,11 @@ export default function LeadMagnetGate({
           <p className="text-green-100 text-sm sm:text-base">
             Thank you, {name.split(' ')[0]}! Your resource is ready below.
           </p>
+          {emailSent && (
+            <p className="text-green-100 text-xs sm:text-sm mt-2 opacity-90">
+              We&apos;ve also emailed a confirmation to {email}.
+            </p>
+          )}
         </div>
 
         {/* The gated content */}
