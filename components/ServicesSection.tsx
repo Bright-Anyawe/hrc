@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { 
+import Reveal from './Reveal';
+import {
   GraduationCap, 
   Briefcase, 
   Settings, 
@@ -138,42 +139,38 @@ const ServicesSection = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div
-                key={service.title}
-                className={`relative group bg-white rounded-xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red ${
-                  isVisible ? 'animate-slide-up' : 'opacity-0'
-                }`}
-                style={{ animationDelay: service.delay }}
-              >
-                {/* Hexagonal Icon */}
-                <div className="relative mb-4 sm:mb-6">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 hexagon ${service.color} flex items-center justify-center mx-auto transition-transform duration-300 group-hover:scale-110`}>
-                    <IconComponent size={24} className="sm:hidden" />
-                    <IconComponent size={32} className="hidden sm:block" />
+              <Reveal key={service.title} delayMs={index * 90} className="h-full">
+                <div className="relative group h-full bg-white rounded-xl p-5 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-t-4 border-hrc-red">
+                  {/* Hexagonal Icon */}
+                  <div className="relative mb-4 sm:mb-6">
+                    <div className={`w-16 h-16 sm:w-20 sm:h-20 hexagon ${service.color} flex items-center justify-center mx-auto transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6`}>
+                      <IconComponent size={24} className="sm:hidden" />
+                      <IconComponent size={32} className="hidden sm:block" />
+                    </div>
                   </div>
+
+                  {/* Service Title */}
+                  <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4 text-center group-hover:text-hrc-red transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  {/* Service Items */}
+                  <ul className="space-y-2">
+                    {service.items.map((item, itemIndex) => (
+                      <li
+                        key={itemIndex}
+                        className="flex items-start text-gray-600 group-hover:text-gray-800 transition-colors duration-300"
+                      >
+                        <span className="w-2 h-2 bg-hrc-red rounded-full mt-2 mr-3 flex-shrink-0 transition-transform duration-300 group-hover:scale-150"></span>
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-hrc-red/5 to-hrc-blue/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
-
-                {/* Service Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-hrc-blue mb-3 sm:mb-4 text-center group-hover:text-hrc-red transition-colors duration-300">
-                  {service.title}
-                </h3>
-
-                {/* Service Items */}
-                <ul className="space-y-2">
-                  {service.items.map((item, itemIndex) => (
-                    <li
-                      key={itemIndex}
-                      className="flex items-start text-gray-600 group-hover:text-gray-800 transition-colors duration-300"
-                    >
-                      <span className="w-2 h-2 bg-hrc-red rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span className="text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-hrc-red/5 to-hrc-blue/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

@@ -136,6 +136,78 @@
   .hexagon {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* ─── Scroll-reveal (see components/Reveal.tsx) ───
+     Hidden until the element enters the viewport, then eased into place.
+     JS toggles `.is-visible`; reduced-motion users skip straight to visible. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-left { transform: translateX(-32px); }
+  .reveal-right { transform: translateX(32px); }
+  .reveal-zoom { transform: scale(0.92); }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── Interactive card: lift, scale, and shadow on hover ─── */
+  .card-interactive {
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .card-interactive:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 22px 45px -18px rgba(0, 35, 102, 0.45);
+  }
+
+  /* ─── Brand glow on hover ─── */
+  .hover-glow {
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .hover-glow:hover {
+    box-shadow: 0 0 0 1px rgba(237, 28, 36, 0.25), 0 12px 30px -10px rgba(237, 28, 36, 0.4);
+  }
+
+  /* ─── Image zoom on hover (wrap a fixed-size, overflow-hidden box) ─── */
+  .img-zoom { overflow: hidden; }
+  .img-zoom img,
+  .img-zoom > div {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .img-zoom:hover img,
+  .img-zoom:hover > div {
+    transform: scale(1.08);
+  }
+
+  /* ─── Animated underline for text links ─── */
+  .underline-grow {
+    background-image: linear-gradient(var(--hrc-red), var(--hrc-red));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .underline-grow:hover {
+    background-size: 100% 2px;
+  }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes fadeIn {
@@ -156,6 +228,11 @@
 @keyframes slideInRight {
   from { opacity: 0; transform: translateX(40px); }
   to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes testimonialProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
 }
 
 .section-transition {
@@ -184,6 +261,80 @@
 .gradient-overlay {
   background: linear-gradient(135deg, rgba(237, 28, 36, 0.88) 0%, rgba(0, 35, 102, 0.92) 100%);
 }
+
+/* ─── Cinematic hero background ─────────────────────────────────────────
+   Gives the hero photos a filmic feel: a slow Ken Burns push, a colour-graded
+   overlay, animated film grain, a vignette, and widescreen letterbox bars.
+   All motion is transform/opacity only and is neutralised by the global
+   prefers-reduced-motion block near the bottom of this file. */
+
+.hero-kenburns {
+  will-change: transform;
+  transform-origin: center center;
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+/* Vary the focal point per slide so the motion never feels mechanical */
+.hero-kenburns--a { transform-origin: 32% 38%; }
+.hero-kenburns--b { transform-origin: 68% 60%; }
+.hero-kenburns--c { transform-origin: 50% 30%; }
+
+@keyframes heroKenBurns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.2) translate3d(0, -1.5%, 0); }
+}
+
+/* Colour grade: teal-blue shadows lifting into a warm brand-tinted highlight,
+   with a deep filmic falloff top and bottom. */
+.cinematic-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 10, 25, 0.62) 0%,
+      rgba(0, 10, 25, 0.18) 32%,
+      rgba(0, 10, 25, 0.32) 68%,
+      rgba(0, 6, 18, 0.9) 100%
+    ),
+    linear-gradient(
+      105deg,
+      rgba(0, 35, 102, 0.6) 0%,
+      rgba(0, 0, 0, 0.1) 52%,
+      rgba(237, 28, 36, 0.22) 100%
+    );
+}
+
+/* Vignette — darkens the corners like a camera lens. */
+.hero-vignette {
+  background: radial-gradient(ellipse at center, transparent 42%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* Animated film grain via an inline SVG noise texture. */
+.hero-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px 150px;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  animation: heroGrain 0.7s steps(2) infinite;
+}
+
+@keyframes heroGrain {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(-4%, 3%, 0); }
+  100% { transform: translate3d(3%, -2%, 0); }
+}
+
+/* Widescreen letterbox bars, top and bottom. */
+.hero-letterbox::before,
+.hero-letterbox::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(22px, 5vh, 56px);
+  background: #000;
+  pointer-events: none;
+}
+.hero-letterbox::before { top: 0; }
+.hero-letterbox::after { bottom: 0; }
 
 /* ─── Consulting Methodology Wheel ─── */
 .wheel-rotate-in {
@@ -347,5 +498,11 @@
 
   .hero-3d-rig {
     transform: none !important;
-}
+  }
+
+  /* Never leave reveal content stuck hidden for reduced-motion users */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

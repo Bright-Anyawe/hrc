@@ -15,8 +15,8 @@ const HeroSection = () => {
 
   const slides = [
     {
-      title: 'HRC GHANA',
-      subtitle: 'Hedge Resource Centre — Leader in Resource Consulting',
+      title: 'Empowering Growth Through Training & Consulting',
+      subtitle: 'HRC Ghana — Leader in Resource Consulting since 2004',
       description: 'HRC Ghana (Hedge Resource Centre) empowers businesses and individuals through comprehensive training, skills development, and strategic consulting services.',
       image: "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
     },
@@ -51,24 +51,37 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Slideshow */}
+    <section
+      id="home"
+      className="hero-letterbox relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-32 pb-16"
+    >
+      {/* ── Cinematic background ── */}
+      {/* Colour-graded photo slideshow with a slow Ken Burns push per slide */}
       <div className="absolute inset-0 z-0">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
+        {slides.map((slide, index) => {
+          const kenBurnsVariant = ['hero-kenburns--a', 'hero-kenburns--b', 'hero-kenburns--c'][
+            index % 3
+          ];
+          return (
             <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            />
-            <div className="absolute inset-0 gradient-overlay" />
-          </div>
-        ))}
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <div
+                className={`w-full h-full bg-cover bg-center bg-no-repeat hero-kenburns ${kenBurnsVariant}`}
+                style={{ backgroundImage: `url(${slide.image})` }}
+              />
+              <div className="absolute inset-0 cinematic-overlay" />
+            </div>
+          );
+        })}
       </div>
+
+      {/* Film grain + vignette layers for a filmic finish */}
+      <div className="absolute inset-0 z-[2] pointer-events-none hero-grain" aria-hidden="true" />
+      <div className="absolute inset-0 z-[3] pointer-events-none hero-vignette" aria-hidden="true" />
 
       {/* 3D parallax accent layer — purely decorative, sits above the photo,
           below the text/CTAs */}
@@ -80,11 +93,12 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className={`text-white space-y-6 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <div className="space-y-4">
-              {/* Eyebrow */}
+              {/* Eyebrow — brand tagline (the full name lives in the header
+                  lockup and the subtitle, so it isn't repeated here) */}
               <div className="flex items-center gap-3">
                 <span className="block w-8 h-px bg-hrc-red flex-shrink-0"></span>
                 <span className="text-xs font-semibold tracking-widest uppercase text-gray-300">
-                  HRC Ghana | Hedge Resource Centre
+                  Quality Is Our Priority
                 </span>
               </div>
               <h1 className="speakable text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
