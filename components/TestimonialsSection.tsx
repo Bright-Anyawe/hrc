@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Star, Quote, ChevronRight, ChevronDown, BadgeCheck } from 'lucide-react';
 import {
   Carousel,
@@ -31,8 +31,20 @@ const renderStars = (rating: number) =>
 /**
  * A single testimonial card. Long, multi-paragraph stories collapse to their
  * opening paragraph so one detailed account doesn't dwarf the carousel.
+ *
+ * When `isActive`, an autoplay progress bar runs along the top edge so the
+ * automatic rotation is visible. It's paused whenever `paused` is true so a
+ * card never slides away mid-read.
  */
-const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
+const TestimonialCard = ({
+  testimonial,
+  isActive,
+  paused,
+}: {
+  testimonial: Testimonial;
+  isActive: boolean;
+  paused: boolean;
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = testimonial.quote.split('\n\n');
@@ -40,15 +52,28 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   const visibleParagraphs = canCollapse && !isExpanded ? paragraphs.slice(0, 1) : paragraphs;
 
   return (
-    <Card className="h-full bg-white/10 backdrop-blur-sm border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+    <Card className="relative h-full bg-white/10 backdrop-blur-sm border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-500">
+      {isActive && (
+        <div
+          className="absolute top-0 left-0 h-0.5 bg-hrc-red"
+          style={{
+            width: 0,
+            animation: `testimonialProgress ${AUTOPLAY_INTERVAL_MS}ms linear forwards`,
+            animationPlayState: paused ? 'paused' : 'running',
+          }}
+        />
+      )}
       <CardContent className="p-6 sm:p-8 md:p-10">
         {/* Stars + verification */}
         <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
           <div className="flex items-center gap-1">{renderStars(testimonial.rating)}</div>
           {testimonial.verified && (
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-green-300 bg-green-400/10 border border-green-400/20 rounded-full px-2.5 py-1">
-              <BadgeCheck size={13} />
-              Verified client
+            <span
+              className="inline-flex items-center gap-1 text-[11px] font-medium text-green-300/80"
+              title="Verified client feedback"
+            >
+              <BadgeCheck size={13} className="text-green-300/80" />
+              Verified
             </span>
           )}
         </div>
@@ -101,18 +126,34 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 
 const TestimonialsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isInView, setIsInView] = useState(true);
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-  // Autoplay pauses while the visitor is reading (hover/focus) or the tab is hidden.
-  const [isPaused, setIsPaused] = useState(false);
+  // Autoplay pauses while the visitor is reading (hover/focus), the tab is
+  // hidden, or the section is scrolled out of view.
+  const [isHovered, setIsHovered] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Real, permissioned client feedback leads the rotation; placeholder
+  // entries follow so social proof is front-and-centre.
+  const orderedTestimonials = useMemo(() => {
+    const verified = testimonials.filter((t) => t.verified);
+    const placeholders = testimonials.filter((t) => !t.verified);
+    return [...verified, ...placeholders];
+  }, []);
+
+  const isPaused = isHovered || !isInView || reducedMotion;
 
   useEffect(() => {
+    setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
+        setIsInView(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
@@ -136,15 +177,11 @@ const TestimonialsSection = () => {
 
   // ── Autoplay ──
   // Advances the carousel on an interval. Skipped entirely for visitors who
-  // prefer reduced motion, and paused while they're interacting or the tab is
-  // backgrounded so a card never slides away mid-read.
+  // prefer reduced motion, and paused while they're interacting, the tab is
+  // backgrounded, or the section is off-screen so a card never slides away
+  // mid-read.
   useEffect(() => {
     if (!api || isPaused) return;
-
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-    if (prefersReducedMotion) return;
 
     const id = setInterval(() => {
       // Guard against advancing while the tab is hidden (interval timers still
@@ -195,10 +232,10 @@ const TestimonialsSection = () => {
             isVisible ? 'animate-fade-in' : 'opacity-0'
           )}
           style={{ animationDelay: '200ms' }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocusCapture={() => setIsPaused(true)}
-          onBlurCapture={() => setIsPaused(false)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onFocusCapture={() => setIsHovered(true)}
+          onBlurCapture={() => setIsHovered(false)}
         >
           <Carousel
             setApi={setApi}
@@ -209,9 +246,13 @@ const TestimonialsSection = () => {
             className="w-full max-w-4xl mx-auto"
           >
             <CarouselContent>
-              {testimonials.map((testimonial) => (
+              {orderedTestimonials.map((testimonial, i) => (
                 <CarouselItem key={testimonial.id} className="md:basis-4/5 lg:basis-3/4">
-                  <TestimonialCard testimonial={testimonial} />
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    isActive={i === current}
+                    paused={isPaused}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>

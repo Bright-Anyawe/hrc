@@ -1,24 +1,18 @@
 /**
  * Testimonials & Case Studies data for HRC Ghana.
  *
- * ⚠️ MIXED DATA — check the `verified` flag on every entry.
+ * ⚠️ All `testimonials` below are real, named clients who gave this feedback
+ * directly (`verified: true`). Only these entries may ever back schema.org
+ * Review structured data.
  *
- *   verified: true  → a real, named client who gave this feedback directly.
- *                     Safe to attribute publicly. Only these entries may ever
- *                     back schema.org Review structured data.
- *
- *   verified: false → PLACEHOLDER. Illustrative sample content, not a real
- *                     engagement. Every name, company, quote, and metric
- *                     (e.g. "34% productivity increase", "GHS 2.5M in
- *                     funding") is invented.
- *
- * All `caseStudies` below are still placeholders — the /testimonials page
- * carries a disclaimer banner saying so.
+ * All `caseStudies` are still placeholders — every name, company, quote, and
+ * metric (e.g. "34% productivity increase", "GHS 2.5M in funding") is
+ * invented. The /testimonials page carries a disclaimer banner saying so.
  *
  * Do not reuse placeholder company/person names elsewhere on the site as if
  * they were real clients (e.g. a "client logo wall"), and never attach
- * schema.org Review/AggregateRating to an unverified entry — Google treats
- * review markup as a factual claim.
+ * schema.org Review/AggregateRating to a case study — Google treats review
+ * markup as a factual claim.
  */
 
 export interface Testimonial {
@@ -104,64 +98,18 @@ export const testimonials: Testimonial[] = [
     service: 'Advisory',
   },
   {
-    id: 't1',
-    name: 'Kwame Asante',
-    role: 'Managing Director',
-    company: 'Asante Holdings Ltd',
-    initials: 'KA',
+    id: 't-selk-farms',
+    name: 'SEL K FARMS',
+    role: 'Project Promoter – Ayiwata Rice Development Project (ARDP)',
+    initials: 'SK',
     rating: 5,
-    verified: false,
+    verified: true,
     quote:
-      'Hedge Resource Centre transformed our staff training approach. Their tailored CPD programmes significantly improved our team\'s performance and productivity. Within six months, we saw a measurable increase in efficiency across departments.',
-    service: 'Training & Tutoring',
-  },
-  {
-    id: 't2',
-    name: 'Abena Osei',
-    role: 'HR Manager',
-    company: 'Ghana Financial Services',
-    initials: 'AO',
-    rating: 5,
-    verified: false,
-    quote:
-      'The advisory team at HRC provided invaluable guidance during our restructuring. Their deep understanding of the Ghanaian business landscape combined with global best practices made all the difference. Highly recommended.',
+      "Working with Hedge Resource Centre on the development of the Ayiwata Rice Development Project (ARDP) has been an outstanding experience. From the initial concept discussions to the preparation of a comprehensive, investment-ready project proposal, the Hedge Resource Centre team demonstrated exceptional professionalism, technical expertise, and a deep understanding of agribusiness project development.\n\n" +
+      'Their ability to translate our vision into a well-structured, financially sound, and strategically aligned proposal exceeded our expectations. The team paid close attention to every aspect of the project, including technical design, financial modelling, risk analysis, sustainability planning, monitoring and evaluation, and alignment with national development priorities. The final proposal clearly reflects their commitment to quality, innovation, and excellence.\n\n' +
+      'Throughout the engagement, Hedge Resource Centre was highly responsive, collaborative, and dedicated to ensuring that our project met the standards expected by funding institutions. Their guidance and strategic insights significantly strengthened the quality and competitiveness of our proposal.\n\n' +
+      'Although the project is currently awaiting funding for implementation, we are confident that the solid foundation laid by Hedge Resource Centre has positioned the Ayiwata Rice Development Project for success. We highly recommend Hedge Resource Centre to organizations seeking professional support in project design, proposal development, business planning, and resource mobilization.',
     service: 'Advisory',
-  },
-  {
-    id: 't3',
-    name: 'Dr. Emmanuel Sowah',
-    role: 'Programme Director',
-    company: 'Community Skills Initiative',
-    initials: 'ES',
-    rating: 5,
-    verified: false,
-    quote:
-      'HRC\'s TVET skills development programme for our community youth was exceptional. Over 200 young people gained market-relevant technical skills, and 75% secured employment within three months of completion.',
-    service: 'Skills Development',
-  },
-  {
-    id: 't4',
-    name: 'Martha Amponsah',
-    role: 'CEO',
-    company: 'Amponsah Ventures',
-    initials: 'MA',
-    rating: 4,
-    verified: false,
-    quote:
-      'From business formation to funding strategy, HRC guided us through every step. Their research and industry analysis gave us the confidence to enter new markets. A true partner in growth.',
-    service: 'Research & Advisory',
-  },
-  {
-    id: 't5',
-    name: 'Samuel Tetteh',
-    role: 'Project Lead',
-    company: 'Rural Development Trust',
-    initials: 'ST',
-    rating: 5,
-    verified: false,
-    quote:
-      'The community assessment conducted by HRC was thorough and insightful. Their recommendations directly shaped our intervention strategy and helped us allocate resources where they were needed most.',
-    service: 'Assessment',
   },
 ];
 

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { Resend } from 'resend';
 import { syncToCRM } from '@/lib/crm';
 
 /**
@@ -91,6 +92,68 @@ async function subscribeToBrevo(email: string, name: string | undefined): Promis
   }
 }
 
+/** Sends a confirmation email to the subscriber and notifies the team. */
+async function sendConfirmationEmail(
+  name: string | undefined,
+  email: string,
+): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn('[newsletter] RESEND_API_KEY not set — no email sent');
+    return false;
+  }
+
+  const from = process.env.RESEND_FROM || 'HRC Ghana <onboarding@resend.dev>';
+  const notifyTo = process.env.LEAD_NOTIFY_TO || 'info@hrcghana.com';
+  const resend = new Resend(apiKey);
+  const firstName = name?.split(/\s+/)[0] ?? 'there';
+
+  // 1. Confirmation to the subscriber
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to: [email],
+      subject: 'Welcome to the HRC Ghana mailing list!',
+      html: `
+        <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#1a1a1a;">
+          <h2 style="color:#0b1f3a;">Welcome, ${firstName}!</h2>
+          <p>Thank you for subscribing to the Hedge Resource Centre mailing list.</p>
+          <p>You'll now receive updates on our latest guides, training programmes,
+             professional development insights, and advisory services.</p>
+          <p>If you have any questions, feel free to reply to this email or visit
+             <a href="https://hrcghana.com" style="color:#c9a227;">hrcghana.com</a>.</p>
+          <p style="margin-top:32px;">Warm regards,<br/>The HRC Ghana Team</p>
+          <hr style="border:none;border-top:1px solid #eee;margin:24px 0;" />
+          <p style="color:#888;font-size:12px;">
+            Hedge Resource Centre · Quality Our Priority<br/>
+            You received this because you subscribed at hrcghana.com.
+          </p>
+        </div>`,
+    });
+    if (error) {
+      console.error('[newsletter] Confirmation email rejected:', error);
+    }
+  } catch (err) {
+    console.error('[newsletter] Confirmation email failed:', err);
+  }
+
+  // 2. Team notification — best-effort
+  try {
+    await resend.emails.send({
+      from,
+      to: [notifyTo],
+      subject: `New newsletter subscriber: ${name || email}`,
+      html: `<p><strong>Name:</strong> ${name || 'Not provided'}</p>
+             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Source:</strong> Website newsletter signup</p>`,
+    });
+  } catch (err) {
+    console.warn('[newsletter] Team notification failed:', err);
+  }
+
+  return true;
+}
+
 /** Fallback capture so the address is still reachable if Brevo is unavailable. */
 async function captureInCRM(email: string, name: string | undefined): Promise<boolean> {
   const result = await syncToCRM({
@@ -136,6 +199,11 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
+
+  // Fire-and-forget: send confirmation + team notification emails
+  sendConfirmationEmail(name, email).catch((err) =>
+    console.warn('[newsletter] Email notification error:', err),
+  );
 
   return NextResponse.json({ success: true, subscribed: isSubscribed });
 }
