@@ -185,6 +185,65 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Vision 2036 */}
+        <div className={`mt-12 sm:mt-16 md:mt-20 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '800ms' }}>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="block w-8 h-px bg-hrc-red"></span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-hrc-red">Strategic Impact Goals</span>
+              <span className="block w-8 h-px bg-hrc-red"></span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-hrc-blue mb-3 sm:mb-4">Vision 2036</h3>
+            <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto">
+              By 2036, Hedge Resource Centre is committed to achieving the following strategic outcomes:
+            </p>
+          </div>
+
+          <ol className="space-y-4 sm:space-y-5 max-w-4xl mx-auto">
+            <li className="flex gap-4 bg-white p-5 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-hrc-red">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-hrc-red text-white text-sm sm:text-base font-bold rounded-full">
+                1
+              </span>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Train over <span className="font-bold text-hrc-blue">5,000 educators, youth, and professionals</span> across Africa, equipping them with the knowledge, skills, and resources needed to thrive in a dynamic global economy.
+              </p>
+            </li>
+            <li className="flex gap-4 sm:gap-5 bg-white p-5 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-hrc-blue">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-hrc-blue text-white text-sm sm:text-base font-bold rounded-full">
+                2
+              </span>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Mobilize and manage development projects and grants exceeding{' '}
+                <span className="font-bold text-hrc-blue">GHS 20 million</span> to advance education, agriculture, entrepreneurship, community development, and institutional transformation.
+              </p>
+            </li>
+            <li className="flex gap-4 sm:gap-5 bg-white p-5 sm:p-6 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-l-4 border-hrc-red">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-hrc-red text-white text-sm sm:text-base font-bold rounded-full">
+                3
+              </span>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Support more than <span className="font-bold text-hrc-blue">100 schools, small and medium-sized enterprises (SMEs), civil society organizations, and public institutions</span> in building resilient, high-performing organizations through strategic consulting, capacity development, and resource mobilization.
+              </p>
+            </li>
+            <li className="flex gap-4 sm:gap-5 bg-white p-5 sm:p-6 rounded-xl shadow-sm border-l-4 border-hrc-blue">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-hrc-blue text-white text-sm sm:text-base font-bold rounded-full">
+                4
+              </span>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Establish Hedge Resource Centre as a <span className="font-bold text-hrc-blue">trusted partner</span> for governments, development agencies, businesses, educational institutions, and civil society organizations seeking sustainable and innovative resource management solutions across Africa.
+              </p>
+            </li>
+            <li className="flex gap-4 sm:gap-5 bg-white p-5 sm:p-6 rounded-xl shadow-sm border-l-4 border-hrc-red">
+              <span className="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-hrc-red text-white text-sm sm:text-base font-bold rounded-full">
+                5
+              </span>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                Develop a <span className="font-bold text-hrc-blue">regional network of consultants, trainers, and strategic partners</span> to expand the Centre&apos;s reach, foster knowledge sharing, and deliver high-quality consulting services throughout the continent.
+              </p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
   );
