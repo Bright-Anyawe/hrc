@@ -63,6 +63,15 @@ const nextConfig = {
       },
     ];
   },
+  // pdfkit reads its .afm font metrics from disk at runtime, so it must not be
+  // bundled by webpack — otherwise it looks for the fonts in a vendor chunk and
+  // the PDF generation fails. Keep it external on the server.
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push('pdfkit');
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;

@@ -2,13 +2,13 @@
 title: "Understanding the Global Unemployment Challenge and the Failure to Translate Research into Employment"
 excerpt: "Graduate unemployment keeps rising even as universities produce more graduates than ever. This article argues that a neglected asset — the research project — can be transformed into compelling evidence of workplace competence and a gateway to employment."
 date: "2026-08-06"
-author: "HRC Ghana Team"
+author: "HRC Team"
 category: "Professional Development"
 image: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800"
 tags: ["graduate unemployment", "employability", "career development", "research", "professional development", "HRC Ghana"]
 isPartOf:
   type: Blog
-  name: HRC Ghana Blog
+  name: HRC Blog
   url: https://www.hrcghana.com/blog
 ---
 
@@ -72,4 +72,4 @@ This article adopts a different perspective. It argues that research should no l
 
 Understanding this shift in perspective is the first step toward transforming research from a document that sits on a library shelf into a catalyst for professional growth, organizational improvement, and real-world impact.
 
-At **Hedge Resource Centre (HRC) Ghana**, we help individuals and organizations turn knowledge into tangible results through professional training, research, and skills development. [Contact us](mailto:info@hrcghana.com) or call **0302907115** to learn more, or explore related insights on our [professional development guide](/resources/guide-professional-development-ghana).
+At **Hedge Resource Centre (HRC) **, we help individuals and organizations turn knowledge into tangible results through professional training, research, and skills development. [Contact us](mailto:info@hrcghana.com) or call **0302907115** to learn more, or explore related insights on our [professional development guide](/resources/guide-professional-development-ghana).

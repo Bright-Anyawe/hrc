@@ -47,6 +47,7 @@ export default function BusinessFormationChecklistPage() {
               <LeadMagnetGate
                 resourceTitle="Business Formation Checklist — Start Your Business in Ghana"
                 resourceDescription="Enter your details below to get instant access to our complete step-by-step checklist for registering and launching a business in Ghana."
+                downloadUrl="/api/download/business-formation-checklist"
                 icon={<ClipboardCheck size={28} className="sm:w-9 sm:h-9 text-white" />}
               >
                 {/* ── GATED CONTENT ── */}

@@ -48,6 +48,7 @@ export default function ProfessionalDevelopmentGuidePage() {
               <LeadMagnetGate
                 resourceTitle="The Ultimate Guide to Professional Development in Ghana"
                 resourceDescription="Enter your details below to get instant access to our comprehensive guide — packed with actionable strategies for career growth in Ghana."
+                downloadUrl="/api/download/guide-professional-development"
                 icon={<BookOpen size={28} className="sm:w-9 sm:h-9 text-white" />}
               >
                 {/* ── GATED CONTENT ── */}

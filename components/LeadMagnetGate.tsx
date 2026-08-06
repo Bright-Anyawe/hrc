@@ -11,14 +11,28 @@ interface LeadMagnetGateProps {
   resourceDescription: string;
   /** Icon to show above the form */
   icon?: React.ReactNode;
+  /** URL of the downloadable PDF, e.g. /api/download/guide-professional-development */
+  downloadUrl?: string;
   /** The content to reveal after email capture */
   children: React.ReactNode;
+}
+
+/** Triggers a browser download for a same-origin file URL. */
+function triggerDownload(url: string) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '';
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
 }
 
 export default function LeadMagnetGate({
   resourceTitle,
   resourceDescription,
   icon,
+  downloadUrl,
   children,
 }: LeadMagnetGateProps) {
   const [name, setName] = useState('');
@@ -69,6 +83,11 @@ export default function LeadMagnetGate({
     setStatus('success');
     trackEvent('lead_magnet_download', { resource: resourceTitle });
 
+    // Kick off the real download now that the visitor is validated.
+    if (downloadUrl) {
+      setTimeout(() => triggerDownload(downloadUrl), 300);
+    }
+
     // Fire-and-forget: emails the visitor their resource confirmation, notifies
     // the team, and syncs the lead to the CRM. Runs after the reveal so a slow
     // or failed send never delays the content the visitor came for.
@@ -103,6 +122,21 @@ export default function LeadMagnetGate({
             <p className="text-green-100 text-xs sm:text-sm mt-2 opacity-90">
               We&apos;ve also emailed a confirmation to {email}.
             </p>
+          )}
+          {downloadUrl && (
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={() => triggerDownload(downloadUrl)}
+                className="inline-flex items-center gap-2 bg-white text-green-700 px-6 py-2.5 rounded-full font-semibold text-sm shadow hover:bg-green-50 transition-all duration-300 hover:scale-105"
+              >
+                <Download size={18} />
+                Download PDF
+              </button>
+              <p className="text-green-100 text-xs mt-2 opacity-80">
+                If the download didn&apos;t start, click the button to try again.
+              </p>
+            </div>
           )}
         </div>
 
