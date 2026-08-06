@@ -187,8 +187,8 @@ const ProductsClientsProjects = () => {
               <div className="text-sm sm:text-lg opacity-90">Active Projects</div>
             </div>
             <div>
-              <div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">15+</div>
-              <div className="text-sm sm:text-lg opacity-90">Years Experience</div>
+<div className="text-2xl sm:text-4xl font-bold mb-1 sm:mb-2">20+</div>
+                <div className="text-sm sm:text-lg opacity-90">Years Experience</div>
             </div>
           </div>
         </div>

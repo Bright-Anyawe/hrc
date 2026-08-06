@@ -7,9 +7,9 @@ import PageHero from '@/components/PageHero';
 const siteUrl = 'https://www.hrcghana.com';
 
 export const metadata: Metadata = {
-  title: 'Why Choose HRC Ghana | Outstanding Service & 15+ Years Experience',
+  title: 'Why Choose HRC Ghana | Outstanding Service & 20+ Years Experience',
   description:
-    'Discover why HRC Ghana (Hedge Resource Centre) is Ghana\'s preferred resource consulting firm. Outstanding service, absolute reliability, innovation, 15+ years proven expertise, and 98% client satisfaction. Call 0302907115.',
+    'Discover why HRC Ghana (Hedge Resource Centre) is Ghana\'s preferred resource consulting firm. Outstanding service, absolute reliability, innovation, 20+ years proven expertise, and 98% client satisfaction. Call 0302907115.',
   keywords: [
     'why choose HRC Ghana',
     'best consulting firm Ghana',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'professional consulting Accra',
     'HRC track record',
     'trusted resource consulting Ghana',
-    '15 years experience Ghana consulting',
+    '20 years experience Ghana consulting',
     'HRC client satisfaction',
     'HRC why choose us',
     'Hedge Resource Centre advantages',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Why Choose Hedge Resource Centre | Ghana\'s Trusted Consulting Partner',
     description:
-      'With 15+ years of experience, 98% client satisfaction, and a proven track record, HRC Ghana is the trusted partner for professional development and consulting.',
+      'With 20+ years of experience, 98% client satisfaction, and a proven track record, HRC Ghana is the trusted partner for professional development and consulting.',
     url: `${siteUrl}/why-choose-us`,
   },
 };
@@ -59,7 +59,7 @@ const faqSchema = {
       name: 'Why choose HRC Ghana for resource consulting?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'HRC Ghana (Hedge Resource Centre) has over 15 years of experience, a 98% client satisfaction rate, and a proven track record of delivering outstanding service, reliability, innovation, and strategic support for businesses and individuals across Ghana.',
+        text: 'HRC Ghana (Hedge Resource Centre) has over 20 years of experience, a 98% client satisfaction rate, and a proven track record of delivering outstanding service, reliability, innovation, and strategic support for businesses and individuals across Ghana.',
       },
     },
     {
@@ -67,7 +67,7 @@ const faqSchema = {
       name: 'What makes Hedge Resource Centre different from other consulting firms in Ghana?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'HRC stands out for its absolute reliability, innovative and creative solutions, strong support for business ideas, and over 15 years of hands-on experience in resource consulting, professional training, and skills development in Ghana.',
+        text: 'HRC stands out for its absolute reliability, innovative and creative solutions, strong support for business ideas, and over 20 years of hands-on experience in resource consulting, professional training, and skills development in Ghana.',
       },
     },
     {

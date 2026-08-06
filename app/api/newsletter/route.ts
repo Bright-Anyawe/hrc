@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { syncToCRM } from '@/lib/crm';
+import { addSubscriber } from '@/lib/newsletter-store';
 
 /**
  * POST /api/newsletter
@@ -187,12 +188,13 @@ export async function POST(request: Request) {
 
   const { email, name } = parsed.data;
 
-  const [isSubscribed, isCaptured] = await Promise.all([
+  const [isSubscribed, isCaptured, isStored] = await Promise.all([
     subscribeToBrevo(email, name),
     captureInCRM(email, name),
+    Promise.resolve(addSubscriber(email, name, 'website')),
   ]);
 
-  if (!isSubscribed && !isCaptured) {
+  if (!isSubscribed && !isCaptured && !isStored) {
     console.error('[newsletter] Every sink failed — lead not captured for', email);
     return NextResponse.json(
       { error: 'We could not save your details right now. Please email info@hrcghana.com.' },

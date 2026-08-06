@@ -6,6 +6,8 @@ import { Menu, X, Phone, Mail, Clock, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { trackEvent } from '@/lib/analytics';
+import NewBlogBadge from './NewBlogBadge';
+import type { PostMeta } from '@/lib/posts';
 
 interface NavItem {
   name: string;
@@ -43,7 +45,7 @@ const navGroups: NavGroup[] = [
   },
 ];
 
-const Header = () => {
+const Header = ({ newPost }: { newPost?: PostMeta | null }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -194,13 +196,14 @@ const Header = () => {
                     <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[180px]">
                       {group.items.map((item) => (
                         <Link key={item.name} href={item.href}>
-                          <span
-                            onClick={() => setOpenDropdown(null)}
-                            className="block px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200"
-                          >
-                            {item.name}
-                          </span>
-                        </Link>
+                            <span
+                              onClick={() => setOpenDropdown(null)}
+                              className="flex items-center gap-1 px-4 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200"
+                            >
+                              {item.name}
+                              {item.name === 'Blog' && <NewBlogBadge post={newPost ?? null} />}
+                            </span>
+                          </Link>
                       ))}
                     </div>
                   </div>
@@ -269,9 +272,10 @@ const Header = () => {
                       <Link key={item.name} href={item.href}>
                         <span
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block px-6 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
+                          className="flex items-center gap-1 px-6 py-2.5 text-xs font-semibold tracking-wider uppercase text-gray-700 hover:text-hrc-red hover:bg-gray-50 transition-colors duration-200 w-full text-left border-b border-gray-50"
                         >
                           {item.name}
+                          {item.name === 'Blog' && <NewBlogBadge post={newPost ?? null} />}
                         </span>
                       </Link>
                     ))}

@@ -150,7 +150,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 sm:pt-6 border-t border-white/20">
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  <Counter target={15} />+
+                  <Counter target={20} />+
                 </div>
                 <div className="text-xs tracking-widest uppercase text-gray-400 mt-1">Years</div>
               </div>

@@ -5,6 +5,7 @@ import { Calendar, User, Tag, ArrowLeft, Share2, Rss } from 'lucide-react';
 import AnimatedPage from '@/components/AnimatedPage';
 import CopyLinkButton from './CopyLinkButton';
 import BlogPostBody from '@/components/BlogPostBody';
+import MarkPostSeen from '@/components/MarkPostSeen';
 import { getPostBySlug, getAllSlugs, formatPostDate, getAllPostsMeta } from '@/lib/posts';
 
 const siteUrl = 'https://www.hrcghana.com';
@@ -265,6 +266,7 @@ export default function BlogPostPage({ params }: Props) {
           )}
         </main>
       </AnimatedPage>
+      <MarkPostSeen slug={post.slug} />
     </>
   );
 }

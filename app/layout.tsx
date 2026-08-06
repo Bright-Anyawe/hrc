@@ -1,6 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { getAllPostsMeta } from '@/lib/posts';
+import NewBlogToast from '@/components/NewBlogToast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -114,7 +116,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HRC Ghana | Hedge Resource Centre — Leader in Resource Consulting Ghana',
     description:
-      'HRC Ghana provides expert resource consulting, professional training, skills development, research, assessment, and advisory services. Over 15 years serving individuals, businesses, and communities across Ghana.',
+      'HRC Ghana provides expert resource consulting, professional training, skills development, research, assessment, and advisory services. Over 20 years serving individuals, businesses, and communities across Ghana.',
     url: siteUrl,
     siteName: 'Hedge Resource Centre',
     images: [
@@ -341,6 +343,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const latestPost = getAllPostsMeta()[0] ?? null;
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -375,9 +379,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Header />
+        <Header newPost={latestPost} />
         <div id="main-content">{children}</div>
         <Footer />
+        <NewBlogToast post={latestPost} />
         <GoogleAnalytics />
         <MarketingPixels />
         <BackToTop />

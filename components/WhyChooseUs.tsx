@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
     },
     {
       icon: Star,
-      title: 'More than 15 years of Experience',
+      title: 'More than 20 years of Experience',
       description: 'Extensive expertise gained through years of successful project delivery and client satisfaction.'
     }
   ];
@@ -171,7 +171,7 @@ const WhyChooseUs = () => {
 
               <div className="group cursor-pointer">
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-300">
-                  15+
+                  20+
                 </div>
                 <div className="text-sm sm:text-lg opacity-90">Years Experience</div>
               </div>

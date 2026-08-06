@@ -109,7 +109,7 @@ const AboutSection = () => {
               {/* Floating Stats Card */}
               <div className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 bg-white rounded-xl p-3 sm:p-6 shadow-2xl border-t-4 border-hrc-red">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-hrc-blue">15+</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-hrc-blue">20+</div>
                   <div className="text-xs sm:text-sm text-gray-600">Years of Excellence</div>
                 </div>
               </div>
